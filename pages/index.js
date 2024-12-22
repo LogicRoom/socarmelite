@@ -5,11 +5,13 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>My App</title>
+        <title>Carmelite - Deep/Tech House Producer and DJ</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="main-content">
+        <h1 className="">Carmelite</h1>
+        <h4>Deep/Tech House Producer and DJ</h4>
         <Image src="/logo.png" alt="Logo" width={200} height={200} className="logo" />
         <br></br>
         <a href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer" className="soundcloud-button">
@@ -29,6 +31,11 @@ export default function Home() {
           justify-content: center;
           height: 100vh;
           text-align: center;
+        }
+        .page-title {
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 20px;
         }
         .soundcloud-button button {
           padding: 10px 20px;
