@@ -12,9 +12,13 @@ export default function Home() {
       <main className="main-content">
         <Image src="/logo.png" alt="Logo" width={200} height={200} className="logo" />
         <br></br>
-        <a href="https://soundcloud.com/socarmelite" target="_blank" rel="noopener noreferrer" className="soundcloud-button">
+        <a href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer" className="soundcloud-button">
           <button>Visit My SoundCloud</button>
         </a>
+        <p className="contact-message">
+          Email me for questions, remix requests, or 121 coaching/tuition to learn my sound:
+          <a href="mailto:socarmelite@gmail.com"> socarmelite@gmail.com</a>
+        </p>
       </main>
 
       <style jsx>{`
@@ -34,9 +38,22 @@ export default function Home() {
           border-radius: 5px;
           cursor: pointer;
           font-size: 16px;
+          margin-bottom: 20px;
         }
         .soundcloud-button button:hover {
           background-color: #e64a00;
+        }
+        .contact-message {
+          font-size: 16px;
+          margin-top: 20px;
+          color: #333;
+        }
+        .contact-message a {
+          color: #0070f3;
+          text-decoration: none;
+        }
+        .contact-message a:hover {
+          text-decoration: underline;
         }
       `}</style>
     </div>
