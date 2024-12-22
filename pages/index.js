@@ -10,8 +10,9 @@ export default function Home() {
       </Head>
 
       <main className="main-content">
-        <h1 className="page-title">Carmelite</h1>
-        <h4>Deep/Tech House Producer and DJ</h4>
+        <h1 className="page-title">CARMELITE</h1>
+        <h4 style={{ color: "#333" }}>Deep/Tech House Producer and DJ</h4>
+        <br></br>
         <Image src="/logo.png" alt="Logo" width={200} height={200} className="logo" />
         <br></br>
         <a href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer" className="soundcloud-button">
@@ -36,7 +37,6 @@ export default function Home() {
           font-size: 24px;
           font-weight: bold;
           margin-bottom: 20px;
-          color: #333;
         }
         .soundcloud-button button {
           padding: 10px 20px;
