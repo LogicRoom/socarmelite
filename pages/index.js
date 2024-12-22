@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <main className="main-content">
-        <h1 className="">Carmelite</h1>
+        <h1 className="page-title">Carmelite</h1>
         <h4>Deep/Tech House Producer and DJ</h4>
         <Image src="/logo.png" alt="Logo" width={200} height={200} className="logo" />
         <br></br>
@@ -36,6 +36,7 @@ export default function Home() {
           font-size: 24px;
           font-weight: bold;
           margin-bottom: 20px;
+          color: #333;
         }
         .soundcloud-button button {
           padding: 10px 20px;
