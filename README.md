@@ -1,3 +1,23 @@
+Here are the tracks with titles, SoundCloud, and Dropbox links:
+
+1. **Aiwan Sake**  
+   [SoundCloud](https://on.soundcloud.com/de8qN6ffA8CMKxNP8) | [Dropbox](https://www.dropbox.com/scl/fi/1szv9apmshjq00rhf8tfn/Carmelite-Aiwan-Sake.mp3?rlkey=aeazliln1bnn3slv0v4ki37e2&dl=0)
+
+2. **I'm Just**  
+   [SoundCloud](https://on.soundcloud.com/d5KJRqiFwNdDCZBL6) | [Dropbox](https://www.dropbox.com/scl/fi/35an8qepkd2tjfnzdh8ni/Carmelite-I-m-Just.mp3?rlkey=fcgf3aoqpsmetlvst3ml8mvxl&dl=0)
+
+3. **Rain Drops**  
+   [SoundCloud](https://on.soundcloud.com/tg9mjYn2LCHcGyRk9) | [Dropbox](https://www.dropbox.com/scl/fi/epf83uhkklctsuqdey3hv/Carmelite-Rain-Drops.mp3?rlkey=os1hivseex8xb8wuoz64alkfu&dl=0)
+
+4. **Never Meant To**  
+   [SoundCloud](https://on.soundcloud.com/FNk7UmMHNtbmhFdFA) | [Dropbox](https://www.dropbox.com/scl/fi/7n39xut9jdx5jj0ggfzov/Carmelite-Never-Meant-To.mp3?rlkey=jgxjfetjvnx0gw06cuwm39jvk&dl=0)
+
+5. **Hit Me Up**  
+   [SoundCloud](https://on.soundcloud.com/kCtHveoJsjZniVz79) | [Dropbox](https://www.dropbox.com/scl/fi/m5u62w2lek4uxu2jxjp0i/5_hit_me_up.mp3?rlkey=w8p6ldp4fd5ap8lk116hctjej&dl=0)
+
+6. **Nothing To Fear (Original Mix)**  
+   [SoundCloud](https://on.soundcloud.com/Nf78nZNMeTAWuMKc9) | [Dropbox](https://www.dropbox.com/scl/fi/oil17yn8tkhj2f7p1otwm/Carmelite-Nothing-To-Fear-Original-Mix.mp3?rlkey=6l1pxijzcqffeuorgljuk79qb&dl=0)
+
 # Next + Netlify Starter
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46648482-644c-4c80-bafb-872057e51b6b/deploy-status)](https://app.netlify.com/sites/next-dev-starter/deploys)
