@@ -46,7 +46,7 @@ export default function SecretTracks() {
     if (password === "carmelite6743") {
       window.open(link, "_blank");
     } else {
-      alert("Incorrect password. Download not allowed.");
+      alert("Incorrect password. Download not allowed. Please DM Pete for the download password.");
     }
   };
 
@@ -60,7 +60,7 @@ export default function SecretTracks() {
 
       <main className="main-content">
         <h1 className="page-title">Secret Tracks</h1>
-        <p>Thank you for supporting my work. Below are my private tracks for your listening and download pleasure.</p>
+        <p>Thank you for supporting my work. Below are my private tracks for your listening and download pleasure if you are in my instagram group.</p>
 
         {tracks.map((track, index) => (
           <div key={index} className="track-card">
