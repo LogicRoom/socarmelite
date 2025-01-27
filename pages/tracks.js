@@ -40,29 +40,39 @@ export default function SecretTracks() {
     },
   ];
 
+  // Function to handle download with password protection
+  const handleDownload = (link) => {
+    const password = prompt("Please enter the password to download:");
+    if (password === "carmelite6743") {
+      window.open(link, "_blank");
+    } else {
+      alert("Incorrect password. Download not allowed.");
+    }
+  };
+
   return (
     <div className="container">
       <Head>
         <title>Secret Tracks - Carmelite</title>
+        <meta name="robots" content="noindex, nofollow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="main-content">
         <h1 className="page-title">Secret Tracks</h1>
-        <p>Thank you for supporting my work. Below are my private tracks for your listening and download pleasure. PLEASE do not share these anywhere since they are not released.</p>
+        <p>Thank you for supporting my work. Below are my private tracks for your listening and download pleasure.</p>
 
         {tracks.map((track, index) => (
           <div key={index} className="track-card">
             <iframe className="soundcloud-player" width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src={track.soundcloudEmbed}></iframe>
-            <a href={track.dropboxLink} target="_blank" rel="noopener noreferrer" className="download-button">
+            <button className="download-button" onClick={() => handleDownload(track.dropboxLink)}>
               Download {track.title}
-            </a>
+            </button>
           </div>
         ))}
       </main>
 
       <style jsx>{`
-        /* CSS Reset */
         body,
         html {
           margin: 0;
@@ -78,7 +88,7 @@ export default function SecretTracks() {
 
         .main-content {
           text-align: center;
-          margin-top: 1000px; /* Large margin ensures top visibility */
+          margin-top: 1000px;
         }
 
         .page-title {
@@ -108,7 +118,8 @@ export default function SecretTracks() {
           padding: 10px 20px;
           background-color: #0070f3;
           color: white;
-          text-decoration: none;
+          border: none;
+          cursor: pointer;
           border-radius: 5px;
         }
 
