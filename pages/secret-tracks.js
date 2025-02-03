@@ -38,6 +38,12 @@ export default function SecretTracks() {
         "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2000345611%3Fsecret_token%3Ds-r1VizeB0Hu5&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
       dropboxLink: "https://www.dropbox.com/scl/fi/4ou9wpvkx3fxuf8pxtm5u/Carmelite-Nothing-To-Fear.mp3?rlkey=r5qaah2f37c88hwgkys0pf9jz&dl=0",
     },
+    {
+      title: "Tearing Through My Heart (7 of 52)",
+      soundcloudEmbed:
+        "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008250239%3Fsecret_token%3Ds-uJjvKLZmcxg&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      dropboxLink: "https://www.dropbox.com/scl/fi/s07hjy5offlwatxdr5o9v/Carmelite-Tearing-Through-My-Heart.mp3?rlkey=pudfgwszkauoj0ihvu4cfqips&dl=0",
+    },
   ];
 
   // Function to handle download with password protection
@@ -60,7 +66,10 @@ export default function SecretTracks() {
 
       <main className="main-content">
         <h1 className="page-title">Secret Tracks</h1>
-        <p>Thank you for supporting my work. Below are my private tracks for your listening and download pleasure if you are in my instagram group.</p>
+        <p>
+          Thank you for supporting my work. Below are my private tracks for your listening and download pleasure if you are in my instagram group. Please DO NOT share this page, it's a secret page for
+          my closest reviewers :)
+        </p>
 
         {tracks.map((track, index) => (
           <div key={index} className="track-card">
