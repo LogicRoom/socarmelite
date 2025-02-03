@@ -65,12 +65,24 @@ export default function SecretTracks() {
       </Head>
 
       <main className="main-content">
+        <div></div>
+        <br /> <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h1 className="page-title">Secret Tracks</h1>
         <p>
           Thank you for supporting my work. Below are my private tracks for your listening and download pleasure if you are in my instagram group. Please DO NOT share this page, it's a secret page for
           my closest reviewers :)
         </p>
-
         {tracks.map((track, index) => (
           <div key={index} className="track-card">
             <iframe className="soundcloud-player" width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src={track.soundcloudEmbed}></iframe>
