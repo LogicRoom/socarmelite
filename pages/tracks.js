@@ -4,7 +4,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1991839491&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/go6240d1iwk362i2vdl73/Carmelite-Aiwan-Sake.mp3?rlkey=u6dstrtyfrks9y7735usec85w&dl=0",
-    status: "review",
+    status: "released",
     beatportLink: "",
   },
   {
@@ -20,7 +20,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1996192067%3Fsecret_token%3Ds-RKkswhPbeDZ&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/vll6hap9878a5i6rejzdv/Carmelite-Rain-Drops.mp3?rlkey=x1ky5cx3j12o4ub0nvwn7k2hm&dl=0",
-    status: "review",
+    status: "released",
     beatportLink: "",
   },
   {
