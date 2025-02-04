@@ -1,11 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
-import TrackList from "./tracksList";
-import tracks from "./tracks";
+import TrackList from "../components/tracksList"; // Ensure this matches your folder structure
+import tracks from "../data/tracks";
 
-export default function Home() {
-  const releasedTracks = tracks.filter((track) => track.status === "released");
-
+export default function Home({ releasedTracks }) {
   return (
     <div className="container">
       <Head>
@@ -43,4 +41,10 @@ export default function Home() {
       </main>
     </div>
   );
+}
+
+// ✅ Ensures `tracks` is available during build
+export function getStaticProps() {
+  const releasedTracks = tracks.filter((track) => track.status === "released");
+  return { props: { releasedTracks } };
 }
