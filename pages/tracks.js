@@ -11,7 +11,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1996191651%3Fsecret_token%3Ds-oJ3e0Oy9Zom&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/mnou8wy0m9amlzkmxvxbo/Carmelite-I-m-Just.mp3?rlkey=9p0ao9azub1hkcmf32mefzkwe&dl=0",
-    status: "released", // Only shown on homepage
+    status: "signed", // Only shown on homepage
   },
   {
     title: "Rain Drops (3 of 52)",
