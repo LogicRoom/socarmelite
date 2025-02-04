@@ -12,7 +12,7 @@ export default function AllTracks() {
 
       <main className="main-content">
         <h1 className="page-title">All Tracks</h1>
-        <p>Browse all tracks at any stage.</p>
+        <p>Here are all the tracks I have produced. DM me on insta for the download link. Please DO NOT share this page it's private.</p>
         <TrackList tracks={tracks} />
       </main>
     </div>
