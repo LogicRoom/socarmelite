@@ -23,8 +23,13 @@ export default function TrackList({ tracks }) {
               Download {track.title}
             </button>
 
-            <div className="status-box">
-              Signed? : <span className={isSigned ? "status-tick" : "status-cross"}>{isSigned ? "✔" : "✘"}</span>
+            <div className="info-container">
+              <div className="genre-container">
+                <span className="label">Genre:</span> <span className="genre-label">{track.genre}</span>
+              </div>
+              <div className="status-container">
+                <span className="label">Signed?</span> <span className={isSigned ? "status-tick" : "status-cross"}>{isSigned ? "✔" : "✘"}</span>
+              </div>
             </div>
           </div>
         );

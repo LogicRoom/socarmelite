@@ -115,3 +115,35 @@ body {
 .status-cross {
   color: red;
 }
+
+/* CSS */
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.genre-container,
+.status-container {
+  display: flex;
+  gap: 5px;
+  font-weight: bold;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .info-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
