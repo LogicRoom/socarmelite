@@ -63,6 +63,10 @@ p {
   transform: scale(1.1);
 }
 
+.track-list {
+  width: 700px;
+}
+
 /* Contact Message */
 .contact-message {
   font-size: 16px;
@@ -79,18 +83,24 @@ p {
   text-decoration: underline;
 }
 
-/* Track Card */
 .track-card {
-  margin-bottom: 20px;
-  padding: 10px;
+  width: 100%;
+  max-width: 800px; /* Wider for better appearance */
+  margin: 20px auto; /* Centers the track card */
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .track-card iframe {
+  width: 100%; /* Ensure embedded players stretch */
+  height: 166px; /* Adjust height for SoundCloud embeds */
+  max-width: 800px; /* Limits maximum width */
   display: block;
   margin: 0 auto;
 }
