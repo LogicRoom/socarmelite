@@ -14,7 +14,7 @@ export default function SecretTracks() {
 
       <main className="main-content">
         <h1 className="page-title">Secret Tracks</h1>
-        <p>These are tracks available for review or released.</p>
+        <p>These are tracks that I have finished. If you are a label interested in signing them please see the indicator on each track as to it's a availability.</p>
         <TrackList tracks={filteredTracks} />
       </main>
     </div>

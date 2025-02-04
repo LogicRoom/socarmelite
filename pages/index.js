@@ -17,8 +17,8 @@ export default function Home() {
         <h1 className="page-title">CARMELITE</h1>
         <h4 style={{ color: "#333" }}>Deep/Tech House Producer and DJ</h4>
         <p>
-          I struggled with a crippling drug addiction for 20 years. Now my mission is to stay clean, stay healthy, and produce 52 deep/tech house club tracks in 52 weeks. You can follow my journey on
-          Instagram where I upload daily videos with my progress.
+          I struggled with drug addiction for 20 years. Now my mission is to stay clean, stay healthy, and produce 52 deep/tech house club tracks in 52 weeks. You can follow my journey on Instagram
+          where I upload daily videos with my progress.
         </p>
 
         <Image src="/logo.png" alt="Logo" width={200} height={200} className="logo" />
