@@ -41,61 +41,6 @@ export default function Home() {
         <h2 className="sub-heading">Released Tracks</h2>
         <TrackList tracks={releasedTracks} />
       </main>
-
-      <style jsx>{`
-        .container {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
-        .main-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-        .page-title {
-          font-size: 24px;
-          font-weight: bold;
-          margin-bottom: 20px;
-        }
-        h4 {
-          margin-bottom: 15px;
-        }
-        p {
-          margin-bottom: 20px;
-        }
-        .social-icons {
-          display: flex;
-          gap: 30px;
-          margin: 20px 0;
-          justify-content: center;
-        }
-        .icon {
-          cursor: pointer;
-          transition: transform 0.2s ease;
-        }
-        .icon:hover {
-          transform: scale(1.1);
-        }
-        .contact-message {
-          font-size: 16px;
-          margin-top: 20px;
-          color: #333;
-        }
-        .contact-message a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-        .contact-message a:hover {
-          text-decoration: underline;
-        }
-        .sub-heading {
-          font-size: 20px;
-          font-weight: bold;
-          margin-top: 40px;
-        }
-      `}</style>
     </div>
   );
 }

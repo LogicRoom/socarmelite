@@ -1,3 +1,4 @@
+/* Global Styles */
 html,
 body {
   background-color: #f8fafc;
@@ -11,23 +12,74 @@ body {
   box-sizing: border-box;
 }
 
+/* Container */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
+/* Main Content */
 .main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 2rem 0;
 }
 
+/* Titles */
 .page-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
+.sub-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 20px;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 30px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.icon {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+/* Contact Message */
+.contact-message {
+  font-size: 16px;
+  margin-top: 20px;
+  color: #333;
+}
+
+.contact-message a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.contact-message a:hover {
+  text-decoration: underline;
+}
+
+/* Track Card */
 .track-card {
   margin-bottom: 20px;
   padding: 10px;
@@ -43,6 +95,7 @@ body {
   margin: 0 auto;
 }
 
+/* Download Button */
 .download-button {
   display: inline-block;
   margin-top: 10px;
