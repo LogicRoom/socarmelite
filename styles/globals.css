@@ -10,10 +10,12 @@ body {
 
 * {
   box-sizing: border-box;
+  max-width: 100%; /* Prevents overflow issues */
 }
 
 /* Container */
 .container {
+  width: 90%; /* More flexible width */
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -35,72 +37,32 @@ body {
   margin-bottom: 20px;
 }
 
-.sub-heading {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 40px;
-}
-
-/* Paragraphs */
-p {
-  margin-bottom: 20px;
-}
-
-/* Social Icons */
-.social-icons {
-  display: flex;
-  gap: 30px;
-  margin: 20px 0;
-  justify-content: center;
-}
-
-.icon {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.icon:hover {
-  transform: scale(1.1);
-}
-
+/* Track List */
 .track-list {
-  width: 700px;
-}
-
-/* Contact Message */
-.contact-message {
-  font-size: 16px;
-  margin-top: 20px;
-  color: #333;
-}
-
-.contact-message a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.contact-message a:hover {
-  text-decoration: underline;
-}
-
-.track-card {
-  width: 100%;
-  max-width: 800px; /* Wider for better appearance */
-  margin: 20px auto; /* Centers the track card */
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
+  width: 100%; /* Full width for flexibility */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Track Card */
+.track-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Needed for absolute positioning */
+}
+
 .track-card iframe {
-  width: 100%; /* Ensure embedded players stretch */
-  height: 166px; /* Adjust height for SoundCloud embeds */
-  max-width: 800px; /* Limits maximum width */
+  width: 100%; /* Ensures the embed scales properly */
+  height: 166px;
   display: block;
   margin: 0 auto;
 }
@@ -115,39 +77,35 @@ p {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  white-space: nowrap; /* Prevents text wrapping */
 }
 
 .download-button:hover {
   background-color: #005bb5;
 }
 
-.status-icon {
-  font-size: 20px;
-  margin-left: 10px;
-}
-
-.status-tick {
-  color: green;
-}
-
-.status-cross {
-  color: red;
-}
-
 /* Status Box */
 .status-box {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
   background: white;
   border: 1px solid #ccc;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: bold;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+@media (max-width: 600px) {
+  .status-box {
+    position: static;
+    margin-top: 10px;
+  }
 }
 
 .status-tick {
@@ -156,19 +114,4 @@ p {
 
 .status-cross {
   color: red;
-}
-
-.track-card {
-  position: relative; /* Needed for absolute positioning of status box */
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
