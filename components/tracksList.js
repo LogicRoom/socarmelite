@@ -13,7 +13,7 @@ export default function TrackList({ tracks }) {
   return (
     <div className="track-list">
       {tracks.map((track, index) => {
-        const isSigned = track.status === "released";
+        const isSigned = track.status === "released" || track.status === "signed";
 
         return (
           <div key={index} className="track-card">
