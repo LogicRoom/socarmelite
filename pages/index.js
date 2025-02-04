@@ -1,7 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
+import TrackList from "./tracksList";
+import tracks from "./tracks";
 
 export default function Home() {
+  const releasedTracks = tracks.filter((track) => track.status === "released");
+
   return (
     <div className="container">
       <Head>
@@ -16,8 +20,9 @@ export default function Home() {
           I struggled with a crippling drug addiction for 20 years. Now my mission is to stay clean, stay healthy, and produce 52 deep/tech house club tracks in 52 weeks. You can follow my journey on
           Instagram where I upload daily videos with my progress.
         </p>
+
         <Image src="/logo.png" alt="Logo" width={200} height={200} className="logo" />
-        <br></br>
+        <br />
         <div className="social-icons">
           <a href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer">
             <Image src="/soundcloud-icon.png" alt="SoundCloud Icon" width={50} height={50} className="icon" />
@@ -26,10 +31,15 @@ export default function Home() {
             <Image src="/instagram-icon.png" alt="Instagram Icon" width={50} height={50} className="icon" />
           </a>
         </div>
+
         <p className="contact-message">
           Email me for questions, remix requests, or 121 coaching/tuition to learn my sound:
           <a href="mailto:socarmelite@gmail.com"> socarmelite@gmail.com</a>
         </p>
+
+        {/* Display only released tracks */}
+        <h2 className="sub-heading">Released Tracks</h2>
+        <TrackList tracks={releasedTracks} />
       </main>
 
       <style jsx>{`
@@ -42,8 +52,6 @@ export default function Home() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
-          height: 100vh;
           text-align: center;
         }
         .page-title {
@@ -59,16 +67,16 @@ export default function Home() {
         }
         .social-icons {
           display: flex;
-          gap: 30px; /* Increased gap for better horizontal spacing */
+          gap: 30px;
           margin: 20px 0;
           justify-content: center;
         }
         .icon {
           cursor: pointer;
-          transition: transform 0.2s ease; /* Adds a hover effect */
+          transition: transform 0.2s ease;
         }
         .icon:hover {
-          transform: scale(1.1); /* Slight enlargement on hover */
+          transform: scale(1.1);
         }
         .contact-message {
           font-size: 16px;
@@ -81,6 +89,11 @@ export default function Home() {
         }
         .contact-message a:hover {
           text-decoration: underline;
+        }
+        .sub-heading {
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 40px;
         }
       `}</style>
     </div>
