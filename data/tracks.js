@@ -28,7 +28,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1996280119%3Fsecret_token%3Ds-9bTQKyqmocz&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/7ptxp9a86x1p5rf26u2iz/Carmelite-Never-Meant-To.mp3?rlkey=4tvyud2t7yk2gc5fp156b253h&dl=0",
-    status: "review",
+    status: "released",
     beatportLink: "",
   },
   {
@@ -44,7 +44,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2000345611%3Fsecret_token%3Ds-r1VizeB0Hu5&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/4ou9wpvkx3fxuf8pxtm5u/Carmelite-Nothing-To-Fear.mp3?rlkey=r5qaah2f37c88hwgkys0pf9jz&dl=0",
-    status: "review",
+    status: "released",
     beatportLink: "",
   },
   {
