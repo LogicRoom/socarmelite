@@ -1,11 +1,11 @@
 import Head from "next/head";
 import TrackList from "../components/tracksList"; // Ensure correct path
 
-export default function SecretTracks({ filteredTracks }) {
+export default function FinishedTracks({ filteredTracks }) {
   return (
     <div className="container">
       <Head>
-        <title>Finished Tracks - Carmelite</title>
+        <title>Finished Tracks</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
