@@ -20,7 +20,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1996192067%3Fsecret_token%3Ds-RKkswhPbeDZ&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/vll6hap9878a5i6rejzdv/Carmelite-Rain-Drops.mp3?rlkey=x1ky5cx3j12o4ub0nvwn7k2hm&dl=0",
-    status: "released",
+    status: "signed",
     genre: "House",
   },
   {
