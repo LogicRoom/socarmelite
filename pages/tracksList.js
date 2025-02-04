@@ -12,14 +12,23 @@ export default function TrackList({ tracks }) {
 
   return (
     <div className="track-list">
-      {tracks.map((track, index) => (
-        <div key={index} className="track-card">
-          <iframe className="soundcloud-player" width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src={track.soundcloudEmbed}></iframe>
-          <button className="download-button" onClick={() => handleDownload(track.dropboxLink)}>
-            Download {track.title}
-          </button>
-        </div>
-      ))}
+      {tracks.map((track, index) => {
+        const isSigned = track.status === "released";
+
+        return (
+          <div key={index} className="track-card">
+            <iframe className="soundcloud-player" width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src={track.soundcloudEmbed}></iframe>
+
+            <button className="download-button" onClick={() => handleDownload(track.dropboxLink)}>
+              Download {track.title}
+            </button>
+
+            <div className="status-box">
+              Signed? : <span className={isSigned ? "status-tick" : "status-cross"}>{isSigned ? "✔" : "✘"}</span>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
