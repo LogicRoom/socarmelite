@@ -46,7 +46,6 @@ export default function SecretTracks() {
     },
   ];
 
-  // Function to handle download with password protection
   const handleDownload = (link) => {
     const password = prompt("Please enter the password to download:");
     if (password === "carmelite6743") {
@@ -65,24 +64,8 @@ export default function SecretTracks() {
       </Head>
 
       <main className="main-content">
-        <div></div>
-        <br /> <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <h1 className="page-title">Secret Tracks</h1>
-        <p>
-          Thank you for supporting my work. Below are my private tracks for your listening and download pleasure if you are in my instagram group. Please DO NOT share this page, it's a secret page for
-          my closest reviewers :)
-        </p>
+        <p>Thank you for supporting my work. Below are my private tracks for your listening and download pleasure if you are in my Instagram group. Please DO NOT share this page.</p>
         {tracks.map((track, index) => (
           <div key={index} className="track-card">
             <iframe className="soundcloud-player" width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src={track.soundcloudEmbed}></iframe>
@@ -92,62 +75,6 @@ export default function SecretTracks() {
           </div>
         ))}
       </main>
-
-      <style jsx>{`
-        body,
-        html {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        .container {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 20px;
-        }
-
-        .main-content {
-          text-align: center;
-          margin-top: 1000px;
-        }
-
-        .page-title {
-          font-size: 24px;
-          font-weight: bold;
-          margin-bottom: 20px;
-        }
-
-        .track-card {
-          margin-bottom: 20px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          background-color: #f9f9f9;
-          width: 100%;
-          box-sizing: border-box;
-        }
-
-        .track-card iframe {
-          display: block;
-          margin: 0 auto;
-        }
-
-        .download-button {
-          display: inline-block;
-          margin-top: 10px;
-          padding: 10px 20px;
-          background-color: #0070f3;
-          color: white;
-          border: none;
-          cursor: pointer;
-          border-radius: 5px;
-        }
-
-        .download-button:hover {
-          background-color: #005bb5;
-        }
-      `}</style>
     </div>
   );
 }
