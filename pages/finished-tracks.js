@@ -8,13 +8,16 @@ export default function SecretTracks() {
   return (
     <div className="container">
       <Head>
-        <title>Secret Tracks - Carmelite</title>
+        <title>Finished Tracks - Carmelite</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
       <main className="main-content">
-        <h1 className="page-title">Secret Tracks</h1>
-        <p>These are tracks that I have finished. If you are a label interested in signing them please see the indicator on each track as to it's a availability.</p>
+        <h1 className="page-title">Finished Tracks</h1>
+        <p>
+          Here are all the tracks I have available for record labels. You can see if they have been signed or not with the green tick. DM me on insta or email socarmelite@gmail.com for the download
+          link. Please DO NOT share this page it's private.
+        </p>
         <TrackList tracks={filteredTracks} />
       </main>
     </div>
