@@ -60,7 +60,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2010567227%3Fsecret_token%3Ds-nlvtlqQUVrf&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/gndqbsuhu68j81gdckh2y/Carmelite-I-Just-Want-You.mp3?rlkey=g3hr9h9nrxrd1lj5tkvuts5g4&dl=0",
-    status: "review",
+    status: "",
     beatportLink: "",
   },
   {
@@ -68,7 +68,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2015715279%3Fsecret_token%3Ds-r5TFJvohUpU&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/uksp19bwok555ohupyx94/Carmelite-Come-On.mp3?rlkey=6uu69jr9s5rit6kchv58z44gy&dl=0",
-    status: "review",
+    status: "",
     beatportLink: "",
   },
   {
@@ -76,7 +76,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2025834284%3Fsecret_token%3Ds-htD36SjJ4Pr&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/dip6pn212n2d3ikztanw5/Carmelite-Rythm-is-a-Dancer.mp3?rlkey=dif5fiu18hsh1llbfqc6cxsmr&dl=0",
-    status: "review",
+    status: "",
     beatportLink: "",
   },
 ];
