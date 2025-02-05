@@ -36,7 +36,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008248903%3Fsecret_token%3Ds-9LixMJFP8qY&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/yqvxd7wpij2bb893or0yu/Carmelite-Hit-Me-Up.mp3?rlkey=kah17elt3wiwbjgufj7q746by&dl=0",
-    status: "review",
+    status: "signed",
     genre: "Nu Disco",
   },
   {
