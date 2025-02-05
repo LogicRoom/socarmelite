@@ -24,6 +24,6 @@ export default function FinishedTracks({ filteredTracks }) {
 // ✅ Ensures `tracks` is defined at build time
 import tracks from "../data/tracks";
 export function getStaticProps() {
-  const filteredTracks = tracks.filter((track) => track.status === "review" || track.status === "signed" || track.status === "released");
+  const filteredTracks = tracks.filter((track) => track.status === "review" || track.status === "signed" || track.status === "released" || track.status === "");
   return { props: { filteredTracks } };
 }
