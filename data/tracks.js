@@ -68,7 +68,7 @@ const tracks = [
     soundcloudEmbed:
       "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2015715279%3Fsecret_token%3Ds-r5TFJvohUpU&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
     dropboxLink: "https://www.dropbox.com/scl/fi/uksp19bwok555ohupyx94/Carmelite-Come-On.mp3?rlkey=6uu69jr9s5rit6kchv58z44gy&dl=0",
-    status: "",
+    status: "review",
     genre: "House",
   },
   {
@@ -78,6 +78,22 @@ const tracks = [
     dropboxLink: "https://www.dropbox.com/scl/fi/dip6pn212n2d3ikztanw5/Carmelite-Rythm-is-a-Dancer.mp3?rlkey=dif5fiu18hsh1llbfqc6cxsmr&dl=0",
     status: "",
     genre: "Deep Tech",
+  },
+  {
+    title: "Esta Noche (11 of 52)",
+    soundcloudEmbed:
+      "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2032532948%3Fsecret_token%3Ds-rse1pys57vB&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    dropboxLink: "https://www.dropbox.com/scl/fi/0kz9pl7dsj142wusbsk70/Carmelite-Raldo-Esta-Noche.mp3?rlkey=gkwhj5ynskaa6d4zchf7ju2w8&dl=0",
+    status: "",
+    genre: "Tech House",
+  },
+  {
+    title: "Don't Stop (12 of 52)",
+    soundcloudEmbed:
+      "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2032533768%3Fsecret_token%3Ds-6OFK6rkuU58&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    dropboxLink: "https://www.dropbox.com/scl/fi/xm7c5ewanpp288uok341s/Carmelite-Don-t-Stop.mp3?rlkey=bglezveuw3myqqo0tcqmq1ffj&dl=0",
+    status: "",
+    genre: "Tech House",
   },
 ];
 
