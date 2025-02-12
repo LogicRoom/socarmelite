@@ -71,14 +71,14 @@ const tracks = [
     status: "",
     genre: "House",
   },
-  // {
-  //   title: "Rythm is a Dancer (10 of 52)",
-  //   soundcloudEmbed:
-  //     "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2025834284%3Fsecret_token%3Ds-htD36SjJ4Pr&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-  //   dropboxLink: "https://www.dropbox.com/scl/fi/dip6pn212n2d3ikztanw5/Carmelite-Rythm-is-a-Dancer.mp3?rlkey=dif5fiu18hsh1llbfqc6cxsmr&dl=0",
-  //   status: "",
-  //   genre: "Deep Tech",
-  // },
+  {
+    title: "Rythm is a Dancer (10 of 52)",
+    soundcloudEmbed:
+      "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2025834284%3Fsecret_token%3Ds-htD36SjJ4Pr&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    dropboxLink: "https://www.dropbox.com/scl/fi/dip6pn212n2d3ikztanw5/Carmelite-Rythm-is-a-Dancer.mp3?rlkey=dif5fiu18hsh1llbfqc6cxsmr&dl=0",
+    status: "",
+    genre: "Deep Tech",
+  },
 ];
 
 export default tracks;
