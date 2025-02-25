@@ -1,7 +1,9 @@
 import Head from "next/head";
 import TrackList from "../components/tracksList"; // Ensure correct path
+import tracks from "../data/tracks"; // Adjust path accordingly
 
-export default function FinishedTracks({ filteredTracks }) {
+export default function FinishedTracks({ tracks }) {
+  // Match prop name
   return (
     <div className="container">
       <Head>
@@ -15,15 +17,12 @@ export default function FinishedTracks({ filteredTracks }) {
           Here are all the tracks I have available for record labels. You can see if they have been signed or not with the green tick. DM me on Insta or email socarmelite@gmail.com for the download
           link. Please DO NOT share this page it's private.
         </p>
-        <TrackList tracks={filteredTracks} />
+        <TrackList tracks={tracks} />
       </main>
     </div>
   );
 }
 
-// ✅ Ensures `tracks` is defined at build time
-import tracks from "../data/tracks";
-export function getStaticProps() {
-  const filteredTracks = tracks.filter((track) => track.status === "review" || track.status === "signed" || track.status === "released" || track.status === "");
-  return { props: { filteredTracks } };
+export async function getStaticProps() {
+  return { props: { tracks: tracks || [] } }; // Ensure tracks is always an array
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TrackList({ tracks }) {
+export default function TrackList({ tracks = [] }) {
   const handleDownload = (link) => {
     const password = prompt("Please enter the password to download:");
     if (password === "carmelite6743") {
@@ -13,7 +13,7 @@ export default function TrackList({ tracks }) {
   return (
     <div className="track-list">
       {tracks.map((track, index) => {
-        const isSigned = track.status === "released" || track.status === "signed";
+        const isSigned = track.signed === "yes";
 
         return (
           <div key={index} className="track-card">
