@@ -134,6 +134,15 @@ const tracks = [
     released: "no",
     genre: "Tech House",
   },
+  {
+    title: "Get The Money (16 of 52)",
+    soundcloudEmbed:
+      "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2057900680%3Fsecret_token%3Ds-Eh2JP1j5cHT&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    dropboxLink: "https://www.dropbox.com/scl/fi/ka376u6tog4pki118b34v/Carmelite-Get-The-Money.mp3?rlkey=14ml9aymbm7zu4jzhrgy14shx&dl=0",
+    signed: "no",
+    released: "no",
+    genre: "Tech House",
+  },
 ];
 
 export default tracks;
