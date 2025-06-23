@@ -14,10 +14,7 @@ export default function Home({ releasedTracks }) {
       <main className="main-content">
         <h1 className="page-title">CARMELITE</h1>
         <h4 style={{ color: "#333" }}>Deep/Tech House Producer and DJ</h4>
-        <p>
-          I struggled with drug addiction for 20 years. Now my mission is to stay clean, stay healthy, and produce 52 deep/tech house club tracks in 52 weeks. You can follow my journey on Instagram
-          where I upload daily videos with my progress.
-        </p>
+        <p>Deep tech and house producer of 20 years. Current releases on multiple UK based labels and supported by unground DJ's in London. </p>
 
         <Image src="/logo.png" alt="Logo" width={200} height={200} className="logo" />
         <br />
