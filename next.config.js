@@ -2,12 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
-    return [
-      {
-        source: '/',
-        destination: '/sessions.html', // Ensure this matches your exact filename in the public folder
-      },
-    ];
+    return {
+      beforeFiles: [
+        // These rewrites are checked BEFORE Next.js checks for existing pages
+        {
+          source: '/',
+          destination: '/sessions.html',
+        },
+      ],
+    };
   },
 };
 
