@@ -83,6 +83,13 @@
             display: block;
             margin-bottom: 15px;
         }
+        
+        /* Ensure links wrapping images don't break flex alignments */
+        .flex-col a {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
 
         /* Specific Row Overrides */
         .lineup-row .row-img {
@@ -117,11 +124,26 @@
             width: 40px;
             height: 40px;
             margin-top: 10px;
+            transition: transform 0.2s ease;
+        }
+        
+        .icon:hover, .row-img:hover {
+            transform: scale(1.03); /* Tiny hover effect so people know it's clickable */
+        }
+
+        .footer-link {
+            display: block;
+            margin: 40px auto;
+            width: fit-content;
+            transition: transform 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            transform: scale(1.05);
         }
 
         .footer-img {
             display: block;
-            margin: 40px auto;
             max-width: 200px;
         }
 
@@ -170,28 +192,46 @@
             <span class="label">Enrico Chirchiello</span>
             <img src="images/image9.png" class="row-img" alt="Enrico">
             <p class="desc">A veteran of the underground, Enrico’s career spans residencies at Ministry of Sound and Pacha. Sound rooted in old-school house with Latin rhythms.</p>
-            <img src="images/image5.png" class="icon" alt="icon">
+            <a href="https://www.instagram.com/enricochirchiello" target="_blank" rel="noopener noreferrer">
+                <img src="images/image5.png" class="icon" alt="Instagram">
+            </a>
         </div>
         <div class="flex-col">
             <span class="label">Carmelite (Pete)</span>
             <img src="images/image2.png" class="row-img" alt="Pete">
             <p class="desc">The creative force behind the sessions, Carmelite is a deep tech house producer. Session 001 serves as the live debut for over 30 unreleased tracks.</p>
-            <img src="images/image5.png" class="icon" alt="icon">
+            <a href="https://www.instagram.com/socarmelite" target="_blank" rel="noopener noreferrer">
+                <img src="images/image5.png" class="icon" alt="Instagram">
+            </a>
         </div>
         <div class="flex-col">
             <span class="label">Exotico</span>
             <img src="images/image3.png" class="row-img" alt="Exotico">
             <p class="desc">Born and bred in London with deep Colombian roots, Exotico blends his heritage with the grit of the UK rave scene. Unique Latin-tech and dark house.</p>
-            <img src="images/image5.png" class="icon" alt="icon">
+            <a href="https://www.instagram.com/djexotico69" target="_blank" rel="noopener noreferrer">
+                <img src="images/image5.png" class="icon" alt="Instagram">
+            </a>
         </div>
     </div>
 
     <h2>The Music<span class="accent">.</span></h2>
     <p>Check a selection of the type of music we will play to make sure you will enjoy and vibe to our music. Please do not share these, they are unreleased!</p>
     <div class="flex-row">
-        <div class="flex-col"><img src="images/image7.jpg" class="row-img" alt="Music"></div>
-        <div class="flex-col"><img src="images/image15.jpg" class="row-img" alt="Music"></div>
-        <div class="flex-col"><img src="images/image6.png" class="row-img" alt="Music"></div>
+        <div class="flex-col">
+            <a href="https://soundcloud.com/enrico-chirchiello/can-you-feel-it-radio-edit" target="_blank" rel="noopener noreferrer">
+                <img src="images/image7.jpg" class="row-img" alt="Music Track 1">
+            </a>
+        </div>
+        <div class="flex-col">
+            <a href="https://soundcloud.com/socarmelite/rhythm-is-a-dancer" target="_blank" rel="noopener noreferrer">
+                <img src="images/image15.jpg" class="row-img" alt="Music Track 2">
+            </a>
+        </div>
+        <div class="flex-col">
+            <a href="https://on.soundcloud.com/Evis7dovecqIbXYs3J" target="_blank" rel="noopener noreferrer">
+                <img src="images/image6.png" class="row-img" alt="Music Track 3">
+            </a>
+        </div>
     </div>
 
     <h2>The Hosts<span class="accent">.</span></h2>
@@ -231,7 +271,9 @@
     <h2>Request an Invitation<span class="accent">.</span></h2>
     <p>Due to the intimate nature of the studio, spaces for Session 001 are strictly limited. If you want to bring a +1 please send a DM to Pete after your application.</p>
     
-    <img src="images/image10.png" class="footer-img" alt="Register">
+    <a href="https://carmelite.fillout.com/t/jmiQvVX5ZVus" target="_blank" rel="noopener noreferrer" class="footer-link">
+        <img src="images/image10.png" class="footer-img" alt="Register">
+    </a>
 
     <p style="font-size: 0.8rem; color: #555; margin-top: 40px;">*Your Data: Any data shared during registration will not be shared with 3rd parties.</p>
 </div>
