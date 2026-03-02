@@ -58,7 +58,6 @@
         .main-logo {
             height: 120px; 
             width: auto;
-            /* Maintaining brand glow on logo */
             filter: drop-shadow(0 0 15px rgba(227, 49, 111, 0.6));
             transition: transform 0.3s ease, filter 0.3s ease;
         }
@@ -93,7 +92,7 @@
             margin-bottom: 20px;
         }
 
-        /* Clean Button (No Glow) */
+        /* Button Styling - Updated for Triggering Popup */
         .btn-primary {
             display: flex;
             justify-content: center;
@@ -111,7 +110,9 @@
             width: fit-content;
             letter-spacing: 1px;
             transition: transform 0.2s ease, background-color 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle dark shadow for depth instead of glow */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -140,7 +141,6 @@
             min-width: 250px; 
         }
 
-        /* Image Sizing with High-Intensity Pink Glow */
         .row-img, .portrait-img {
             height: 220px; 
             width: auto;
@@ -149,7 +149,6 @@
             display: block;
             margin-bottom: 15px;
             transition: transform 0.3s ease, filter 0.3s ease;
-            /* Prominent Pink Hue Border */
             filter: drop-shadow(0 0 12px rgba(227, 49, 111, 0.6));
         }
         
@@ -196,7 +195,6 @@
             transform: scale(1.03);
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .flex-col {
                 min-width: 100%;
@@ -227,9 +225,9 @@
     <h2 style="font-size: 1.4rem;">Private Studio Showcase, London<span class="accent">.</span></h2>
     <span class="subtitle">Saturday 21st March | 5pm-9pm, Camden</span>
 
-    <a href="https://carmelite.fillout.com/t/jmiQvVX5ZVus" target="_blank" rel="noopener noreferrer" class="btn-primary">
+    <button data-fillout-id="xbms2mhP44us" data-fillout-embed-type="popup" data-fillout-dynamic-resize data-fillout-button-color="#E3316F" data-fillout-inherit-parameters data-fillout-popup-size="medium" class="btn-primary">
         Request Invitation
-    </a>
+    </button>
 
     <p>Carmelite Sessions is a curated live-recording series designed to bridge the gap between the studio and the dancefloor. After 12 months of production and 30+ unreleased tracks, Session 001 moves the project into a live environment. We are bringing together a hand-picked group of individuals to capture the energy of these sets for our upcoming social media series. This is an invitation to be part of the process.</p>
 
@@ -272,9 +270,9 @@
         </div>
     </div>
 
-    <a href="https://carmelite.fillout.com/t/jmiQvVX5ZVus" target="_blank" rel="noopener noreferrer" class="btn-primary">
+    <button data-fillout-id="xbms2mhP44us" data-fillout-embed-type="popup" data-fillout-dynamic-resize data-fillout-button-color="#E3316F" data-fillout-inherit-parameters data-fillout-popup-size="medium" class="btn-primary">
         Request Invitation
-    </a>
+    </button>
 
     <h2>The Music<span class="accent">.</span></h2>
     <p>Check a selection of the type of music we will play to make sure you will enjoy and vibe to our music. Please do not share these, they are unreleased!</p>
@@ -334,12 +332,14 @@
     <h2>Request an Invitation<span class="accent">.</span></h2>
     <p>Due to the intimate nature of the studio, spaces for Session 001 are strictly limited. If you want to bring a +1 and think they would be a good fit, send them this page and have them apply.</p>
     
-    <a href="https://carmelite.fillout.com/t/jmiQvVX5ZVus" target="_blank" rel="noopener noreferrer" class="btn-primary">
+    <button data-fillout-id="xbms2mhP44us" data-fillout-embed-type="popup" data-fillout-dynamic-resize data-fillout-button-color="#E3316F" data-fillout-inherit-parameters data-fillout-popup-size="medium" class="btn-primary">
         Request Invitation
-    </a>
+    </button>
 
     <p style="font-size: 0.8rem; color: #555; margin-top: 40px;">*Your Data: Any data shared during registration will not be shared with 3rd parties.</p>
 </div>
+
+<script src="https://server.fillout.com/embed/v1/"></script>
 
 </body>
 </html>
