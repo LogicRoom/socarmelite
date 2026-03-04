@@ -41,7 +41,6 @@
             overflow-x: hidden;
         }
 
-        /* Full Page Background Canvas */
         #background-canvas {
             position: fixed; 
             top: 0;
@@ -102,7 +101,6 @@
         p {
             text-align: center;
             margin-bottom: 20px;
-            /* Drop shadow ensures text is readable over the canvas animation */
             text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
         }
 
@@ -360,90 +358,115 @@
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
-    let particles = [];
+    let lasers = [];
     let discoBalls = [];
     
-    let mouse = { x: null, y: null };
+    let mouse = { x: null, y: null, active: false };
+    let lastMouse = { x: null, y: null };
+    let interactionIntensity = 0; 
 
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
+        mouse.active = true;
+        
+        if (lastMouse.x !== null) {
+            let dx = mouse.x - lastMouse.x;
+            let dy = mouse.y - lastMouse.y;
+            let velocity = Math.sqrt(dx * dx + dy * dy);
+            interactionIntensity = Math.min(1.0, interactionIntensity + velocity * 0.005);
+        }
+        
+        lastMouse.x = mouse.x;
+        lastMouse.y = mouse.y;
     });
 
     window.addEventListener('mouseleave', () => {
-        mouse.x = null;
-        mouse.y = null;
+        mouse.active = false;
     });
 
-    // Glitter Particle
-    class Particle {
+    // Laser Beam Class (Tethered to grid for ambient movement)
+    class LaserBeam {
         constructor(originX, originY) {
             this.originX = originX;
             this.originY = originY;
-            this.x = originX + (Math.random() - 0.5) * 50;
-            this.y = originY + (Math.random() - 0.5) * 50;
-            
-            this.radius = Math.random() * 1.5 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 1;
-            this.speedY = (Math.random() - 0.5) * 1;
-            this.alpha = Math.random() * 0.6 + 0.2;
-            
-            this.isPink = Math.random() > 0.5;
-            this.colorRGB = this.isPink ? '227, 49, 111' : '217, 217, 217';
+            this.reset();
+            this.x = originX + (Math.random() - 0.5) * 100;
+            this.y = originY + (Math.random() - 0.5) * 100;
+        }
+
+        reset() {
+            this.baseAngle = Math.random() * Math.PI * 2; 
+            this.angle = this.baseAngle;
+            this.baseSpeed = Math.random() * 2 + 1; 
+            this.baseLength = Math.random() * 40 + 20;
+            this.isPink = Math.random() > 0.8;
+            this.colorRGB = this.isPink ? '227, 49, 111' : '230, 230, 230';
+            this.baseAlpha = Math.random() * 0.3 + 0.1;
         }
 
         update() {
-            let isInteracting = false;
-            
-            if (mouse.x !== null && mouse.y !== null) {
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 250) {
-                    isInteracting = true;
-                    let force = (250 - distance) / 250;
-                    this.speedX += (dx / distance) * force * 0.15;
-                    this.speedY += (dy / distance) * force * 0.15;
-                    this.speedX += (dy / distance) * force * 0.08;
-                    this.speedY -= (dx / distance) * force * 0.08;
-                }
-            }
-
-            // Tethering to grid
-            if (!isInteracting) {
+            // Interaction: Sweep towards mouse & speed up
+            if (mouse.active && interactionIntensity > 0.1) {
+                let targetAngle = Math.atan2(mouse.y - this.y, mouse.x - this.x);
+                let diff = targetAngle - this.angle;
+                while (diff < -Math.PI) diff += Math.PI * 2;
+                while (diff > Math.PI) diff -= Math.PI * 2;
+                this.angle += diff * 0.05 * interactionIntensity;
+                this.speed = this.baseSpeed + (15 * interactionIntensity);
+            } else {
+                // Tethering: Gently drift back towards origin area if not interactive
                 let dx = this.originX - this.x;
                 let dy = this.originY - this.y;
-                this.speedX += dx * 0.0005; 
-                this.speedY += dy * 0.0005;
+                // Simple easing back to origin region
+                this.x += dx * 0.01;
+                this.y += dy * 0.01;
+
+                // Return angle to base ambient direction
+                let diff = this.baseAngle - this.angle;
+                while (diff < -Math.PI) diff += Math.PI * 2;
+                while (diff > Math.PI) diff -= Math.PI * 2;
+                this.angle += diff * 0.02;
+                this.speed = this.baseSpeed;
             }
 
-            this.speedX *= 0.94; 
-            this.speedY *= 0.94;
-            this.speedX += (Math.random() - 0.5) * 0.2; 
-            this.speedY += (Math.random() - 0.5) * 0.2;
-
-            this.x += this.speedX;
-            this.y += this.speedY;
+            this.x += Math.cos(this.angle) * this.speed;
+            this.y += Math.sin(this.angle) * this.speed;
         }
 
         draw() {
+            let currentLength = this.baseLength + (150 * interactionIntensity);
+            let tailX = this.x - Math.cos(this.angle) * currentLength;
+            let tailY = this.y - Math.sin(this.angle) * currentLength;
+            let currentAlpha = this.baseAlpha + (0.5 * interactionIntensity);
+
+            let grad = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
+            grad.addColorStop(0, `rgba(${this.colorRGB}, ${currentAlpha})`); 
+            grad.addColorStop(1, `rgba(${this.colorRGB}, 0)`); 
+
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${this.colorRGB}, ${this.alpha})`; 
-            ctx.fill();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(tailX, tailY);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = interactionIntensity * 1.5 + 0.5;
+            ctx.lineCap = 'round';
+            ctx.stroke();
         }
     }
 
-    // Realistic 3D Solid Mirror Ball (High-Contrast Tiles)
+    // Ghosted 3D Mirror Ball (Free floating, screen wrapping)
     class DiscoBall {
-        constructor(originX, originY) {
-            this.originX = originX;
-            this.originY = originY;
-            this.x = originX + (Math.random() - 0.5) * 40;
-            this.y = originY + (Math.random() - 0.5) * 40;
+        constructor() {
+            // Random start position across screen
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
             
-            this.baseRadius = Math.random() * 25 + 35; 
+            // Mobile sizing check
+            if (window.innerWidth < 768) {
+                 this.baseRadius = Math.random() * 15 + 20; // Smaller for mobile (20-35px)
+            } else {
+                 this.baseRadius = Math.random() * 25 + 35; // Desktop size (35-60px)
+            }
             this.radius = this.baseRadius;
             
             this.rotX = Math.random() * Math.PI * 2;
@@ -452,8 +475,10 @@
             
             this.baseSpin = (Math.random() - 0.5) * 0.01;
             this.spinSpeed = this.baseSpin;
-            this.vx = (Math.random() - 0.5) * 0.3;
-            this.vy = (Math.random() - 0.5) * 0.3;
+            
+            // Constant drift velocity
+            this.vx = (Math.random() - 0.5) * 0.8;
+            this.vy = (Math.random() - 0.5) * 0.8;
             
             this.rows = 14; 
             this.cols = 24; 
@@ -462,7 +487,6 @@
             for(let r = 0; r < this.rows; r++) {
                 for(let c = 0; c < this.cols; c++) {
                     this.facets.push({
-                        // Permanent tilt for realistic high-contrast noise between mirrors
                         randomTilt: Math.random() * 0.6 - 0.3, 
                         sparkleOffset: Math.random() * Math.PI * 2
                     });
@@ -471,43 +495,44 @@
         }
 
         update() {
-            let isInteracting = false;
             let targetRadius = this.baseRadius;
             
-            if (mouse.x !== null && mouse.y !== null) {
+            // Mouse repulsion
+            if (mouse.active) {
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let dist = Math.sqrt(dx * dx + dy * dy);
                 
                 if (dist < 250) {
-                    isInteracting = true;
                     let force = (250 - dist) / 250;
-                    this.vx -= (dx / dist) * force * 0.4;
-                    this.vy -= (dy / dist) * force * 0.4;
+                    this.vx -= (dx / dist) * force * 0.5;
+                    this.vy -= (dy / dist) * force * 0.5;
                     this.spinSpeed += (Math.sign(this.baseSpin) || 1) * 0.003; 
                     targetRadius = this.baseRadius + (250 - dist) * 0.2; 
                 }
             }
 
-            if (!isInteracting) {
-                let dx = this.originX - this.x;
-                let dy = this.originY - this.y;
-                this.vx += dx * 0.0003; 
-                this.vy += dy * 0.0003;
-            }
+            // Friction to return to base speed
+            this.vx *= 0.98; 
+            this.vy *= 0.98;
+            
+            // Ensure minimum movement speed
+            if (Math.abs(this.vx) < 0.4) this.vx += (Math.random() - 0.5) * 0.1;
+            if (Math.abs(this.vy) < 0.4) this.vy += (Math.random() - 0.5) * 0.1;
 
             this.radius += (targetRadius - this.radius) * 0.1;
-
-            this.vx *= 0.95; 
-            this.vy *= 0.95;
-            this.vx += (Math.random() - 0.5) * 0.05;
-            this.vy += (Math.random() - 0.5) * 0.05;
             this.spinSpeed += (this.baseSpin - this.spinSpeed) * 0.05;
 
             this.x += this.vx;
             this.y += this.vy;
             
-            // True 3D tumbling based on movement velocity
+            // Screen Wrapping (teleport to other side with buffer)
+            const buffer = this.radius * 2;
+            if (this.x < -buffer) this.x = width + buffer;
+            if (this.x > width + buffer) this.x = -buffer;
+            if (this.y < -buffer) this.y = height + buffer;
+            if (this.y > height + buffer) this.y = -buffer;
+            
             this.rotX -= this.vy * 0.015;
             this.rotY += this.vx * 0.015;
             this.rotZ += this.spinSpeed;
@@ -516,9 +541,7 @@
         draw() {
             ctx.save();
             ctx.translate(this.x, this.y);
-            
-            // Push it into the background so it doesn't block text
-            ctx.globalAlpha = 0.5; 
+            ctx.globalAlpha = 0.25; 
 
             const r = this.radius;
             const rows = this.rows;
@@ -538,7 +561,6 @@
                 return { x: x3, y: y3, z: z2 };
             };
 
-            // Draw solid navy core
             ctx.beginPath();
             ctx.arc(0, 0, r - 0.5, 0, Math.PI * 2);
             ctx.fillStyle = '#111827'; 
@@ -547,7 +569,6 @@
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     const facet = this.facets[i * cols + j];
-                    
                     const phi1 = (i / rows) * Math.PI;
                     const phi2 = ((i + 1) / rows) * Math.PI;
                     const theta1 = (j / cols) * Math.PI * 2;
@@ -555,8 +576,7 @@
 
                     const getRawXYZ = (phi, theta) => ({
                         x: r * Math.sin(phi) * Math.cos(theta),
-                        y: r * Math.cos(phi), 
-                        z: r * Math.sin(phi) * Math.sin(theta)
+                        y: r * Math.cos(phi), z: r * Math.sin(phi) * Math.sin(theta)
                     });
 
                     const p1 = rotate3D(getRawXYZ(phi1, theta1).x, getRawXYZ(phi1, theta1).y, getRawXYZ(phi1, theta1).z);
@@ -564,39 +584,26 @@
                     const p3 = rotate3D(getRawXYZ(phi2, theta2).x, getRawXYZ(phi2, theta2).y, getRawXYZ(phi2, theta2).z);
                     const p4 = rotate3D(getRawXYZ(phi2, theta1).x, getRawXYZ(phi2, theta1).y, getRawXYZ(phi2, theta1).z);
 
-                    // Back-face Culling
                     const rawC = getRawXYZ((phi1+phi2)/2, (theta1+theta2)/2);
                     const pc = rotate3D(rawC.x, rawC.y, rawC.z);
                     if (pc.z < 0) continue; 
 
-                    // Lighting Math (Base light facing camera + mirror noise)
                     let intensity = Math.max(0, (pc.z / r) + facet.randomTilt); 
-                    
-                    // Sharp, blown-out highlight
                     let highlight = Math.pow(intensity, 6) * 150; 
-                    
-                    // Base silver + highlight
                     let lightness = 30 + highlight; 
-                    
-                    // Subtle sparkle ping
                     const time = Date.now() / 200;
-                    if (Math.sin(time + facet.sparkleOffset) > 0.95) {
-                        lightness += 50; 
-                    }
+                    if (Math.sin(time + facet.sparkleOffset) > 0.95) lightness += 50; 
 
-                    // Draw Tile
+                    let hue = 0; let sat = 0;
+                    if (facet.randomTilt > 0.1) { hue = 339; sat = 65; }
+
                     ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.lineTo(p3.x, p3.y);
-                    ctx.lineTo(p4.x, p4.y);
+                    ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
+                    ctx.lineTo(p3.x, p3.y); ctx.lineTo(p4.x, p4.y);
                     ctx.closePath();
-                    
-                    ctx.fillStyle = `hsl(0, 0%, ${Math.min(100, lightness)}%)`;
+                    ctx.fillStyle = `hsl(${hue}, ${sat}%, ${Math.min(100, lightness)}%)`;
                     ctx.fill();
-                    
-                    // Outline matches fill to hide gaps without looking like a net
-                    ctx.strokeStyle = `hsl(0, 0%, ${Math.min(100, lightness)}%)`; 
+                    ctx.strokeStyle = `hsl(${hue}, ${sat}%, ${Math.min(100, lightness)}%)`; 
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
@@ -606,67 +613,40 @@
     }
 
     function initElements() {
-        particles = [];
+        lasers = [];
         discoBalls = [];
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         
-        const numParticles = window.innerWidth < 768 ? 80 : 200;
-        const pCols = Math.ceil(Math.sqrt(numParticles * (width / height)));
-        const pRows = Math.ceil(numParticles / pCols);
-
-        for (let i = 0; i < numParticles; i++) {
+        // Lasers are still tethered to a grid region for ambient movement
+        const numLasers = window.innerWidth < 768 ? 40 : 100; 
+        const pCols = Math.ceil(Math.sqrt(numLasers * (width / height)));
+        const pRows = Math.ceil(numLasers / pCols);
+        for (let i = 0; i < numLasers; i++) {
             let col = i % pCols;
             let row = Math.floor(i / pCols);
             let originX = (col + 0.5) * (width / pCols);
             let originY = (row + 0.5) * (height / pRows);
-            particles.push(new Particle(originX, originY));
+            lasers.push(new LaserBeam(originX, originY));
         }
 
-        const numBalls = window.innerWidth < 768 ? 2 : 5;
-        const bCols = Math.ceil(Math.sqrt(numBalls * (width / height)));
-        const bRows = Math.ceil(numBalls / bCols);
-
+        // Disco Balls are free floating (no origin points)
+        const numBalls = window.innerWidth < 768 ? 3 : 6;
         for (let i = 0; i < numBalls; i++) {
-            let col = i % bCols;
-            let row = Math.floor(i / bCols);
-            let originX = (col + 0.5) * (width / bCols);
-            let originY = (row + 0.5) * (height / bRows);
-            discoBalls.push(new DiscoBall(originX, originY));
+            discoBalls.push(new DiscoBall());
         }
     }
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
-
-        // Ecosystem Links (Ball to nearby Glitter)
-        for (let i = 0; i < discoBalls.length; i++) {
-            for (let j = 0; j < particles.length; j++) {
-                const dx = discoBalls[i].x - particles[j].x;
-                const dy = discoBalls[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < discoBalls[i].radius + 50) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(${particles[j].colorRGB}, ${0.1 - distance / 1000})`; 
-                    ctx.lineWidth = 0.3;
-                    ctx.moveTo(discoBalls[i].x, discoBalls[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
-
+        interactionIntensity *= 0.95;
         for (const ball of discoBalls) ball.update(), ball.draw();
-        for (const particle of particles) particle.update(), particle.draw();
-
+        for (const laser of lasers) laser.update(), laser.draw();
         requestAnimationFrame(animate);
     }
 
     initElements();
-    window.addEventListener('resize', () => {
-        initElements(); 
-    });
+    window.addEventListener('resize', () => { initElements(); });
     animate();
 </script>
 
