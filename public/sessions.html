@@ -358,9 +358,12 @@
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
+    
+    // System Arrays
     let lasers = [];
     let discoBalls = [];
     let smokeParticles = [];
+    let graphicEQ;
     
     let mouse = { x: null, y: null, active: false };
     let lastMouse = { x: null, y: null };
@@ -396,19 +399,80 @@
         mouse.active = false;
     });
 
-    // Subtle Smoke Particle System
+    // 1. Ghosted Graphic Equalizer Layer
+    class GraphicEqualizer {
+        constructor() {
+            this.numBands = window.innerWidth < 768 ? 32 : 64;
+            this.bands = new Array(this.numBands).fill(0);
+            this.targetBands = new Array(this.numBands).fill(0);
+            this.baseHeight = 10; 
+            this.maxHeight = window.innerHeight * 0.25; // Max 25% of screen height
+        }
+
+        update() {
+            let time = Date.now() * 0.003;
+            
+            for (let i = 0; i < this.numBands; i++) {
+                // Base sweeping wave to simulate flowing ambient track
+                let wave = (Math.sin(i * 0.3 + time) + Math.cos(i * 0.1 - time)) * 0.5 + 0.5;
+                
+                // Random bass hit spikes
+                if (Math.random() > 0.92) {
+                    let noise = Math.random();
+                    // Enhance bass frequencies (left side)
+                    if (i < this.numBands * 0.3) noise *= 1.5; 
+                    this.targetBands[i] = this.baseHeight + (Math.random() * this.maxHeight * noise);
+                }
+                
+                // Smooth decay for spikes
+                this.targetBands[i] *= 0.90; 
+                
+                // Combine target spikes with flowing wave
+                let combinedHeight = (this.targetBands[i] * 0.6) + (wave * this.maxHeight * 0.4) + this.baseHeight;
+                
+                // Smooth transition to target height
+                this.bands[i] += (combinedHeight - this.bands[i]) * 0.15;
+            }
+        }
+
+        draw() {
+            const barWidth = width / this.numBands;
+            const gap = barWidth * 0.2;
+            const actualBarWidth = barWidth - gap;
+
+            ctx.save();
+            // Ultra-low opacity so it doesn't distract
+            ctx.globalAlpha = 0.06;
+
+            for (let i = 0; i < this.numBands; i++) {
+                let h = this.bands[i];
+                let x = i * barWidth + (gap / 2);
+                let y = height - h;
+
+                // Gradient: Pink at the tip, fading down to Navy
+                let grad = ctx.createLinearGradient(x, y, x, height);
+                grad.addColorStop(0, 'rgba(227, 49, 111, 1)'); 
+                grad.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)'); 
+                grad.addColorStop(1, 'rgba(17, 24, 39, 0)'); 
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.rect(x, y, actualBarWidth, h);
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+    }
+
+    // 2. Subtle Smoke Particle System
     class SmokeParticle {
         constructor() {
             this.x = Math.random() * width;
-            // Start below the screen and drift up
             this.y = height + Math.random() * 200; 
-            // Large, soft particles
             this.radius = Math.random() * 300 + 150; 
-            // Very slow upward and sideways drift
             this.vx = (Math.random() - 0.5) * 0.2;
             this.vy = Math.random() * -0.4 - 0.1; 
             this.life = 0;
-            // Long lifespan for slow movement
             this.maxLife = Math.random() * 800 + 400; 
         }
 
@@ -419,15 +483,12 @@
         }
 
         draw() {
-            // Fade in and out based on lifespan using a sine wave for smooth transition
             let opacity = Math.sin((this.life / this.maxLife) * Math.PI);
-            // Very low peak opacity for subtlety (max 6%)
             let currentAlpha = opacity * 0.06; 
 
             if (currentAlpha <= 0) return;
 
             ctx.save();
-            // Use a radial gradient for a soft, puffy look
             let grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
             grad.addColorStop(0, `rgba(255, 255, 255, ${currentAlpha})`);
             grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
@@ -440,8 +501,7 @@
         }
     }
 
-
-    // V4: Club Laser Beams (Brighter & Thicker)
+    // 3. Club Laser Beams
     class LaserBeam {
         constructor(index, total) {
             this.index = index;
@@ -456,18 +516,11 @@
             
             this.baseAngle = (Math.PI / this.total) * this.index + (Math.PI / 2); 
             this.angle = this.baseAngle;
-            
             this.sweepSpeed = (Math.random() - 0.5) * 0.01;
-            
-            // Increased thickness for visibility
             this.thickness = Math.random() * 2 + 1.5;
-            
             this.isPink = Math.random() > 0.7;
             this.colorRGB = this.isPink ? '227, 49, 111' : '220, 220, 220'; 
-            
-            // Increased base opacity for visibility
             this.baseAlpha = Math.random() * 0.3 + 0.15; 
-            
             this.pulse = Math.random() * Math.PI * 2;
             this.pulseSpeed = Math.random() * 0.05 + 0.02;
         }
@@ -498,8 +551,6 @@
             const endY = this.originY + Math.sin(this.angle) * rayLength;
 
             ctx.save();
-            
-            // Volumetric Fade: Stronger near source, fades out
             let grad = ctx.createLinearGradient(this.originX, this.originY, endX, endY);
             grad.addColorStop(0, `rgba(${this.colorRGB}, ${currentAlpha})`); 
             grad.addColorStop(0.4, `rgba(${this.colorRGB}, ${currentAlpha * 0.3})`); 
@@ -508,17 +559,15 @@
             ctx.beginPath();
             ctx.moveTo(this.originX, this.originY);
             ctx.lineTo(endX, endY);
-            
             ctx.strokeStyle = grad;
             ctx.lineWidth = this.thickness;
             ctx.lineCap = 'round';
             ctx.stroke();
-            
             ctx.restore();
         }
     }
 
-    // Ghosted 3D Mirror Ball (Unchanged Physics)
+    // 4. Ghosted 3D Mirror Balls
     class DiscoBall {
         constructor(isTopFold) {
             this.isTopFold = isTopFold; 
@@ -534,13 +583,10 @@
             this.rotX = Math.random() * Math.PI * 2;
             this.rotY = Math.random() * Math.PI * 2;
             this.rotZ = Math.random() * Math.PI * 2;
-            
             this.baseSpin = (Math.random() - 0.5) * 0.01;
             this.spinSpeed = this.baseSpin;
-            
             this.vx = (Math.random() - 0.5) * 0.8;
             this.vy = (Math.random() - 0.5) * 0.8;
-            
             this.rows = 14; 
             this.cols = 24; 
             this.facets = [];
@@ -700,11 +746,12 @@
     function initElements() {
         lasers = [];
         discoBalls = [];
-        smokeParticles = []; // Reset smoke on resize
+        smokeParticles = [];
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         
-        // Laser count remains acceptable with higher visibility
+        graphicEQ = new GraphicEqualizer();
+        
         const numLasers = window.innerWidth < 768 ? 8 : 16; 
         for (let i = 0; i < numLasers; i++) {
             lasers.push(new LaserBeam(i, numLasers));
@@ -752,7 +799,7 @@
                 }
                 attempts++;
             }
-            discoBalls.push(newBall);
+            //discoBalls.push(newBall);
         }
     }
 
@@ -760,20 +807,24 @@
         ctx.clearRect(0, 0, width, height);
         interactionIntensity *= 0.95;
 
-        // Manage Smoke: Add new particles occasionally if count is low
+        // 1. Equalizer Layer (Deepest Background)
+        if (graphicEQ) {
+            graphicEQ.update();
+            graphicEQ.draw();
+        }
+
+        // Manage Smoke Layer
         if (smokeParticles.length < 15 && Math.random() > 0.98) {
             smokeParticles.push(new SmokeParticle());
         }
-
-        // Clean up dead smoke particles
         smokeParticles = smokeParticles.filter(p => p.life < p.maxLife);
 
+        // Anti-clumping logic for balls
         for (let i = 0; i < discoBalls.length; i++) {
             for (let j = i + 1; j < discoBalls.length; j++) {
                 let dx = discoBalls[i].x - discoBalls[j].x;
                 let dy = discoBalls[i].y - discoBalls[j].y;
                 let dist = Math.sqrt(dx * dx + dy * dy);
-                
                 let targetDist = window.innerWidth < 768 ? 200 : 400;
 
                 if (dist < targetDist && dist > 0) {
@@ -789,9 +840,13 @@
             }
         }
 
-        // LAYER ORDER: Smoke (Deep Background) -> Lasers -> Balls (Foreground)
+        // 2. Smoke Layer
         for (const smoke of smokeParticles) smoke.update(), smoke.draw();
+        
+        // 3. Laser Layer
         for (const laser of lasers) laser.update(), laser.draw();
+        
+        // 4. Disco Ball Layer (Foreground)
         for (const ball of discoBalls) ball.update(), ball.draw();
 
         requestAnimationFrame(animate);
