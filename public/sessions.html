@@ -31,6 +31,10 @@
             --accent: #e3316f;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -209,6 +213,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            margin: 0 auto;
         }
 
         .btn-play:hover {
@@ -374,7 +379,7 @@
         <a href="https://carmelite.fillout.com/t/5Qp3pWzQdXus" target="_blank" rel="noopener noreferrer" class="btn-primary">
             Request Invitation
         </a>
-        <button class="btn-play" id="play-venue-btn">
+        <button class="btn-play play-venue-btn">
             <span>▶</span> See the Venue
         </button>
     </div>
@@ -385,6 +390,12 @@
 
     <h2 class="reveal">The Venue<span class="accent">.</span></h2>
     <p class="reveal">Located in the heart of Camden we have chosen a venue which has everything to create a comfortable, creative fun space to dance, connect with everyone at the event and be part of some high quality recorded content which you can take with you! There will be a champagne reception and drinks provided when you arrive!</p>
+
+    <div class="reveal" style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 35px;">
+        <button class="btn-play play-venue-btn">
+            <span>▶</span> See the Venue
+        </button>
+    </div>
 
     <div class="flex-row reveal">
         <div class="flex-col"><img src="images/image12.jpg" class="row-img" alt="Venue"></div>
@@ -507,7 +518,6 @@
         <p>We are creating a space that naturally fosters fun, effortless conversation. We use premium house music and the energy of the dancefloor as the ultimate icebreaker, allowing you to step away from the screens and meet genuinely cool, driven people.</p>
         <p>Our acid test for every event? It must be completely immersive, engaging, and enjoyable even if you don't drink. This isn't just a one-off showcase; it is a highly curated environment designed for you to find real value and actually look forward to getting out of the house again.</p>
     </div>
-    
     <h2 class="reveal">Request an Invitation<span class="accent">.</span></h2>
     <p class="reveal">Due to the intimate nature of the studio, spaces for Session 001 are strictly limited. If you want to bring a +1 and think they would be a good fit, send them this page and have them apply.</p>
     
@@ -521,20 +531,22 @@
 <script>
     /**
      * ==========================================
-     * 1. VIDEO MODAL LOGIC
+     * 1. MULTI-BUTTON VIDEO MODAL LOGIC
      * ==========================================
      */
-    const playBtn = document.getElementById('play-venue-btn');
+    const playBtns = document.querySelectorAll('.play-venue-btn'); // Now selects ALL buttons with this class
     const modal = document.getElementById('video-modal');
     const closeBtn = document.getElementById('close-modal-btn');
     const video = document.getElementById('venue-video');
 
-    if (playBtn) {
-        playBtn.onclick = () => { 
-            modal.style.display = 'flex'; 
-            setTimeout(() => modal.classList.add('active'), 10); 
-            video.play(); 
-        };
+    if (playBtns.length > 0) {
+        playBtns.forEach(btn => {
+            btn.onclick = () => { 
+                modal.style.display = 'flex'; 
+                setTimeout(() => modal.classList.add('active'), 10); 
+                video.play(); 
+            };
+        });
     }
     
     if (closeBtn) {
@@ -560,8 +572,8 @@
      * ==========================================
      */
     const observerOptions = {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: "0px 0px -50px 0px" // Triggers slightly before it enters the viewport
+        threshold: 0.1, 
+        rootMargin: "0px 0px -50px 0px" 
     };
 
     const observer = new IntersectionObserver((entries) => {
