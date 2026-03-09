@@ -21,6 +21,8 @@
             --text-bright: #ffffff;
             --accent: #e3316f;
             --linkedin: #0a66c2; 
+            --soundcloud: #ff5500;
+            --instagram: #E1306C;
         }
 
         body {
@@ -151,12 +153,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
         .gallery-img {
-            height: 200px; /* Reduced height to fit 3 on a line */
-            width: auto;
-            max-width: 100%; 
+            height: 200px; 
+            width: 100%; 
             object-fit: cover; 
             border-radius: 8px; 
             display: block;
@@ -192,7 +194,7 @@
             text-shadow: 0 0 8px rgba(227, 49, 111, 0.6);
         }
 
-        /* Buttons */
+        /* Main Application Button */
         .btn-primary {
             display: flex;
             justify-content: center;
@@ -220,33 +222,43 @@
             background-color: #c8285f;
         }
 
-        .btn-linkedin {
+        /* Social Trust Buttons */
+        .social-button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .btn-social {
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: transparent;
-            color: var(--linkedin);
-            border: 2px solid var(--linkedin);
             font-family: 'Lexend', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
-            padding: 12px 28px;
+            padding: 10px 20px;
             border-radius: 4px;
             letter-spacing: 1px;
             transition: all 0.2s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            margin-top: 15px;
         }
 
-        .btn-linkedin:hover {
-            transform: scale(1.05);
-            background-color: var(--linkedin);
-            color: var(--text-bright);
-            box-shadow: 0 4px 20px rgba(10, 102, 194, 0.6);
-        }
+        .btn-linkedin { border: 2px solid var(--linkedin); color: var(--linkedin); }
+        .btn-linkedin:hover { background-color: var(--linkedin); color: var(--text-bright); box-shadow: 0 4px 20px rgba(10, 102, 194, 0.6); transform: scale(1.05); }
+
+        .btn-soundcloud { border: 2px solid var(--soundcloud); color: var(--soundcloud); }
+        .btn-soundcloud:hover { background-color: var(--soundcloud); color: var(--text-bright); box-shadow: 0 4px 20px rgba(255, 85, 0, 0.6); transform: scale(1.05); }
+
+        .btn-instagram { border: 2px solid var(--instagram); color: var(--instagram); }
+        .btn-instagram:hover { background-color: var(--instagram); color: var(--text-bright); box-shadow: 0 4px 20px rgba(225, 48, 108, 0.6); transform: scale(1.05); }
 
         @media (max-width: 768px) {
             .wrapper { padding: 20px 15px; }
@@ -262,16 +274,23 @@
                 flex: 1 1 100%; /* Stacks on mobile */
             }
             .gallery-img {
-                height: auto;
+                height: 300px; /* Taller on mobile so they don't look squished */
                 width: 100%;
             }
 
             .flex-col { min-width: 100%; }
             .reputation-label { font-size: 1.5rem; }
-            .btn-primary, .btn-linkedin { 
+            
+            /* Make buttons stack nicely on mobile */
+            .btn-primary, .btn-social { 
                 width: 100%; 
                 padding: 14px 20px; 
             }
+            .social-button-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
             .btn-top-left {
                 top: 15px;
                 left: 15px;
@@ -326,7 +345,7 @@
 
         <div class="gallery-item">
             <img src="/images/3_minky.jpg" alt="Minky, the dribbling supervisor" class="gallery-img">
-            <span class="gallery-caption">The Dribbler</span>
+            <span class="gallery-caption">The Supervisor</span>
         </div>
 
     </div>
@@ -336,10 +355,18 @@
                 <p class="reputation-label">REP<span class="accent">.</span>utation</p>
                 <p style="text-align: center; font-size: 1rem; color: var(--text-main); line-height: 1.6; max-width: 500px; margin: 0 auto 15px auto;">Successful founder. Tech innovator. Finance professional. Verified repuation that guarantees the premium quality of every Carmelite Session.</p>
                 
-                <a href="https://www.linkedin.com/in/pete-heard-lr/" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
-                    Petes LinkedIn
-                </a>
-            </div>
+                <div class="social-button-group">
+                    <a href="https://www.linkedin.com/in/pete-heard-lr/" target="_blank" rel="noopener noreferrer" class="btn-social btn-linkedin">
+                        LinkedIn
+                    </a>
+                    <a href="https://soundcloud.com/socarmelite/tracks" target="_blank" rel="noopener noreferrer" class="btn-social btn-soundcloud">
+                        SoundCloud
+                    </a>
+                    <a href="https://www.instagram.com/socarmelite/" target="_blank" rel="noopener noreferrer" class="btn-social btn-instagram">
+                        Instagram
+                    </a>
+                </div>
+                </div>
         </div>
     </div>
 
