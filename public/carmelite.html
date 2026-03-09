@@ -114,12 +114,12 @@
             box-shadow: 0 4px 15px rgba(227, 49, 111, 0.4);
         }
 
-        /* Repuation/Creator Section styling */
+        /* Reputation Section styling */
         .flex-row {
             display: flex;
             flex-direction: row;
             justify-content: center;
-            align-items: center; /* Vents the content vertically */
+            align-items: center; 
             gap: 30px;
             margin: 30px 0;
             width: 100%;
@@ -134,16 +134,50 @@
             min-width: 280px; 
         }
 
-        .pete-studio-img {
-            height: 300px; /* Strong presence */
+        /* New Image Gallery Row Styling */
+        .image-gallery-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            flex-wrap: nowrap; /* Forces same line on desktop */
+            width: 100%;
+        }
+
+        .gallery-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-img {
+            height: 200px; /* Reduced height to fit 3 on a line */
             width: auto;
             max-width: 100%; 
             object-fit: cover; 
-            border-radius: 8px; /* Softens the rectangle */
+            border-radius: 8px; 
             display: block;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px rgba(227, 49, 111, 0.6));
-            transform: translateZ(0); /* For mobile clipping */
+            filter: drop-shadow(0 0 12px rgba(227, 49, 111, 0.5));
+            transform: translateZ(0); 
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
+        }
+
+        .gallery-caption {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-top: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .reputation-label {
@@ -176,7 +210,7 @@
             transition: transform 0.2s ease, background-color 0.2s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            margin-top: 40px; /* Space before application */
+            margin-top: 40px; 
             margin-bottom: 10px;
             width: fit-content;
         }
@@ -214,43 +248,27 @@
             box-shadow: 0 4px 20px rgba(10, 102, 194, 0.6);
         }
 
-        .btn-secondary {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-            font-family: 'Lexend', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 14px 38px;
-            border-radius: 4px;
-            margin: 20px auto 40px; /* Center-aligned with margin bottom */
-            width: fit-content;
-            letter-spacing: 1px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-secondary:hover {
-            transform: scale(1.05);
-            background-color: var(--accent);
-            color: var(--text-bright);
-        }
-
         @media (max-width: 768px) {
             .wrapper { padding: 20px 15px; }
             .wrapper.hero { padding-top: 60px; }
             .main-logo { height: 100px; }
             
+            /* Responsive gallery fixes */
+            .image-gallery-row {
+                flex-wrap: wrap; 
+                gap: 20px;
+            }
+            .gallery-item {
+                flex: 1 1 100%; /* Stacks on mobile */
+            }
+            .gallery-img {
+                height: auto;
+                width: 100%;
+            }
+
             .flex-col { min-width: 100%; }
-            .pete-studio-img { height: auto; width: 100%; margin-bottom: 20px; }
-            
             .reputation-label { font-size: 1.5rem; }
-            .btn-primary, .btn-linkedin, .btn-secondary { 
+            .btn-primary, .btn-linkedin { 
                 width: 100%; 
                 padding: 14px 20px; 
             }
@@ -286,7 +304,7 @@
         <p>By 2023, I officially stepped away from the coaching space. I did a brief stint in finance, but it was just more of the same: remote work, more screens, and total isolation. I hit a serious low point that year. I came to the harsh realization that a life without a physical community isn't much of a life at all.</p>
 
         <h3 style="text-align: left;">Becoming Carmelite<span class="accent">.</span></h3>
-        <p>For about a decade prior, I had produced under the alias 'Deepscale'. But as the isolation peaked, I needed a new name for my return to music. I chose <strong>Carmelite</strong>. It started as a slightly dark inside joke with myself—the Carmelite monks are an order known for living in the North of England in absolute, complete isolation. It was a fitting homage to exactly how disconnected I had become from the outside world.</p>
+        <p>For about a decade prior, I had operated under the alias 'Deepscale'. But as the isolation peaked, I needed a new name for my return to music. I chose <strong>Carmelite</strong>. It started as a slightly dark inside joke with myself—the Carmelite monks are an order known for living in the North of England in absolute, complete isolation. It was a fitting homage to exactly how disconnected I had become from the outside world.</p>
 
         <h3 style="text-align: left;">Stepping Out Solo<span class="accent">.</span></h3>
         <p>In 2025, everything shifted. I had always been a house music producer in the background, so I made a definitive decision: I was going to force myself out of the house and discover the London house music scene. I started going to events completely on my own.</p>
@@ -294,19 +312,36 @@
         <h3 style="text-align: left;">The Music & The Mission<span class="accent">.</span></h3>
         <p>Things escalated quickly. I started getting my unreleased tracks played by DJs in iconic venues like Ministry of Sound. But the real breakthrough wasn't just hearing my music on a massive club system—it was looking around and realizing that, through the scene, I had suddenly built a massive network of real, in-person friends.</p>
         <p>That was the catalyst for <strong>Carmelite Sessions</strong>. I decided to build something that was the exact opposite of my remote tech days. No more isolation. Just high-quality music, curated energy, and a real community built on actually getting out of the house and connecting in the physical world.</p>
-        <p>If you are passionate about building events and communities and want to work with me email pete@logicroom.co.</o>
 
+        <h3 style="text-align: left;">The Studio & The Synergy<span class="accent">.</span></h3>
+        <p>Finally, I started collaborating and making great tracks with an up-and-coming DJ called Exotico. It became a killer combo: he had the fresh, intuitive knowledge of exactly what works on a live dancefloor, and I had the 20 years of music production experience needed to bring those ideas to life. Because I had officially stepped away from the tech world, I finally had the time to dive fully into this music from my own beautiful studio setup in Reading.</p>
+        <p>The only real hazard to the workflow? My small black cat, who has a habit of dribbling everywhere and constantly weaving herself through the audio cables right when I need to move them.</p>
+        
     </div>
 
-    <div style="margin-top: 60px;">
-        <h2>The Creator<span class="accent">.</span></h2>
-        <div class="flex-row">
-            <div class="flex-col">
-                <img src="/images/pete_in_studio.jpg" alt="Pete in Studio" class="pete-studio-img">
-            </div>
-            <div class="flex-col">
+    <div class="image-gallery-row">
+        
+        <div class="gallery-item">
+            <img src="/images/pete_in_studio.jpg" alt="Pete Solo in Studio" class="gallery-img">
+            <span class="gallery-caption">The Creator</span>
+        </div>
+
+        <div class="gallery-item">
+            <img src="/images/2_pete_aj.jpg" alt="Pete and Exotico in the Studio" class="gallery-img">
+            <span class="gallery-caption">The Collaborator</span>
+        </div>
+
+        <div class="gallery-item">
+            <img src="/images/3_minky.jpg" alt="Minky, the dribbling supervisor" class="gallery-img">
+            <span class="gallery-caption">The Dribbler</span>
+        </div>
+
+    </div>
+    <div style="margin-top: 40px; padding: 25px; background: rgba(17, 24, 39, 0.7); border-radius: 8px; border: 1px solid rgba(227, 49, 111, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+        <div class="flex-row" style="margin: 0; gap: 20px;">
+            <div class="flex-col" style="min-width: 100%; text-align: center;">
                 <p class="reputation-label">REP<span class="accent">.</span>utation</p>
-                <p style="text-align: center; font-size: 1rem; color: var(--text-main); line-height: 1.6; max-width: 320px;">Successful founder. Tech innovator. Finance professional. Verified repuation that guarantees the premium quality of every Carmelite Session.</p>
+                <p style="text-align: center; font-size: 1rem; color: var(--text-main); line-height: 1.6; max-width: 500px; margin: 0 auto 15px auto;">Successful founder. Tech innovator. Finance professional. Verified repuation that guarantees the premium quality of every Carmelite Session.</p>
                 
                 <a href="https://www.linkedin.com/in/pete-heard-lr/" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
                     Petes LinkedIn
@@ -314,6 +349,7 @@
             </div>
         </div>
     </div>
+
     <div style="display: flex; justify-content: center; width: 100%;">
         <a href="https://carmelite.fillout.com/t/5Qp3pWzQdXus" target="_blank" rel="noopener noreferrer" class="btn-primary">
             Apply for Sessions 001
