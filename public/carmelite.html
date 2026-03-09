@@ -79,11 +79,6 @@
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        .main-logo:hover {
-            transform: translateZ(0) scale(1.05);
-            filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
-        }
-
         h1, h2, h3 {
             text-align: center;
             color: var(--text-bright);
@@ -251,15 +246,21 @@
         .btn-soundcloud { border: 2px solid var(--soundcloud); color: var(--soundcloud); }
         .btn-instagram { border: 2px solid var(--instagram); color: var(--instagram); }
 
-        /* =========================================
-           HOVER EFFECTS (DESKTOP ONLY)
-           ========================================= */
-        @media (hover: hover) and (pointer: fine) {
+        /* MOBILE DOUBLE-CLICK FIX: Only apply hover effects if device has a real mouse */
+        @media (hover: hover) {
+            .main-logo:hover {
+                transform: translateZ(0) scale(1.05);
+                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
+            }
             .btn-top-left:hover {
                 background-color: var(--accent);
                 color: var(--text-bright);
                 transform: scale(1.05);
                 box-shadow: 0 4px 15px rgba(227, 49, 111, 0.4);
+            }
+            .gallery-img:hover {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
             }
             .btn-primary:hover {
                 transform: scale(1.05);
@@ -268,24 +269,7 @@
             .btn-linkedin:hover { background-color: var(--linkedin); color: var(--text-bright); box-shadow: 0 4px 20px rgba(10, 102, 194, 0.6); transform: scale(1.05); }
             .btn-soundcloud:hover { background-color: var(--soundcloud); color: var(--text-bright); box-shadow: 0 4px 20px rgba(255, 85, 0, 0.6); transform: scale(1.05); }
             .btn-instagram:hover { background-color: var(--instagram); color: var(--text-bright); box-shadow: 0 4px 20px rgba(225, 48, 108, 0.6); transform: scale(1.05); }
-            .gallery-img:hover {
-                transform: scale(1.05);
-                filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
-            }
-            .main-logo:hover {
-                transform: translateZ(0) scale(1.05);
-                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
-            }
         }
-
-        /* =========================================
-           ACTIVE/PRESS EFFECTS (MOBILE & DESKTOP)
-           ========================================= */
-        .btn-top-left:active { background-color: var(--accent); transform: scale(0.95); }
-        .btn-primary:active { background-color: #c8285f; transform: scale(0.95); }
-        .btn-linkedin:active { background-color: var(--linkedin); color: var(--text-bright); transform: scale(0.95); }
-        .btn-soundcloud:active { background-color: var(--soundcloud); color: var(--text-bright); transform: scale(0.95); }
-        .btn-instagram:active { background-color: var(--instagram); color: var(--text-bright); transform: scale(0.95); }
 
         @media (max-width: 768px) {
             .wrapper { padding: 20px 15px; }

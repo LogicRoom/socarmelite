@@ -209,48 +209,6 @@
             margin: 0 auto;
         }
 
-        /* =========================================
-           HOVER EFFECTS (DESKTOP ONLY)
-           ========================================= */
-        @media (hover: hover) and (pointer: fine) {
-            .btn-top-right.show-nav:hover {
-                background-color: var(--accent);
-                color: var(--text-bright);
-                transform: scale(1.05);
-                box-shadow: 0 4px 15px rgba(227, 49, 111, 0.4);
-            }
-            .btn-primary:hover {
-                transform: scale(1.05);
-                background-color: #c8285f;
-            }
-            .btn-play:hover {
-                color: var(--accent);
-                border-color: var(--accent);
-                transform: scale(1.05);
-                box-shadow: 0 4px 15px rgba(227, 49, 111, 0.2);
-            }
-            .close-modal:hover { color: var(--accent); }
-            .row-img:hover, .portrait-img:hover {
-                transform: scale(1.03);
-                filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
-            }
-            .icon:hover { transform: scale(1.03); }
-            .main-logo:hover {
-                transform: translateZ(0) scale(1.05);
-                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
-            }
-        }
-
-        /* =========================================
-           ACTIVE/PRESS EFFECTS (MOBILE & DESKTOP)
-           ========================================= */
-        .btn-top-right:active, .btn-primary:active, .btn-play:active {
-            transform: scale(0.95);
-        }
-        .btn-top-right:active { background-color: var(--accent); }
-        .btn-primary:active { background-color: #c8285f; }
-        .btn-play:active { color: var(--accent); border-color: var(--accent); }
-
         /* VIDEO MODAL */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -351,6 +309,38 @@
             height: 40px;
             margin-top: 10px;
             transition: transform 0.2s ease;
+        }
+
+        /* MOBILE DOUBLE-CLICK FIX: Only apply hover effects if device has a real mouse */
+        @media (hover: hover) {
+            .main-logo:hover {
+                transform: translateZ(0) scale(1.05);
+                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
+            }
+            .btn-top-right:hover, .btn-top-right.show-nav:hover {
+                background-color: var(--accent);
+                color: var(--text-bright);
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(227, 49, 111, 0.4);
+            }
+            .btn-primary:hover {
+                transform: scale(1.05);
+                background-color: #c8285f;
+            }
+            .btn-play:hover {
+                color: var(--accent);
+                border-color: var(--accent);
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(227, 49, 111, 0.2);
+            }
+            .close-modal:hover { color: var(--accent); }
+            .row-img:hover, .portrait-img:hover {
+                transform: scale(1.03);
+                filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
+            }
+            .icon:hover {
+                transform: scale(1.03);
+            }
         }
 
         @media (max-width: 768px) {
