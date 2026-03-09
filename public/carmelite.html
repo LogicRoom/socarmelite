@@ -88,12 +88,12 @@
             text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Top Left Event Button Styling - Stylized and Sleek */
+        /* Top Left Event Button Styling - NOW FIXED FOR SCROLLING */
         .btn-top-left {
-            position: absolute;
+            position: fixed; /* Locks it to the screen */
             top: 20px;
             left: 20px;
-            background-color: transparent;
+            background-color: rgba(17, 24, 39, 0.7); /* Dark semi-transparent background */
             color: var(--text-bright);
             border: 1px solid var(--accent);
             font-family: 'Lexend', sans-serif;
@@ -105,8 +105,8 @@
             border-radius: 4px;
             letter-spacing: 1px;
             transition: all 0.2s ease;
-            z-index: 100;
-            backdrop-filter: blur(5px);
+            z-index: 1000; /* Keeps it on top of everything */
+            backdrop-filter: blur(8px); /* Stronger blur for legibility over text */
         }
 
         .btn-top-left:hover {
