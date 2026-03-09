@@ -36,6 +36,19 @@
             width: 100%;
         }
 
+        /* FLY-IN ANIMATION CSS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .wrapper {
             max-width: 800px;
             margin: 0 auto;
@@ -88,12 +101,12 @@
             text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Top Left Event Button Styling - NOW FIXED FOR SCROLLING */
+        /* Top Left Event Button Styling - FIXED FOR SCROLLING */
         .btn-top-left {
-            position: fixed; /* Locks it to the screen */
+            position: fixed; 
             top: 20px;
             left: 20px;
-            background-color: rgba(17, 24, 39, 0.7); /* Dark semi-transparent background */
+            background-color: rgba(17, 24, 39, 0.7); 
             color: var(--text-bright);
             border: 1px solid var(--accent);
             font-family: 'Lexend', sans-serif;
@@ -105,8 +118,8 @@
             border-radius: 4px;
             letter-spacing: 1px;
             transition: all 0.2s ease;
-            z-index: 1000; /* Keeps it on top of everything */
-            backdrop-filter: blur(8px); /* Stronger blur for legibility over text */
+            z-index: 1000; 
+            backdrop-filter: blur(8px); 
         }
 
         .btn-top-left:hover {
@@ -136,7 +149,7 @@
             min-width: 280px; 
         }
 
-        /* New Image Gallery Row Styling */
+        /* Image Gallery Row Styling */
         .image-gallery-row {
             display: flex;
             justify-content: center;
@@ -144,7 +157,7 @@
             gap: 15px;
             margin-top: 40px;
             margin-bottom: 20px;
-            flex-wrap: nowrap; /* Forces same line on desktop */
+            flex-wrap: nowrap; 
             width: 100%;
         }
 
@@ -271,17 +284,17 @@
                 gap: 20px;
             }
             .gallery-item {
-                flex: 1 1 100%; /* Stacks on mobile */
+                flex: 1 1 100%; 
+                margin-bottom: 25px; /* MOBILE FIX: Adds perfect spacing between stacked images */
             }
             .gallery-img {
-                height: 300px; /* Taller on mobile so they don't look squished */
+                height: 300px; 
                 width: 100%;
             }
 
             .flex-col { min-width: 100%; }
             .reputation-label { font-size: 1.5rem; }
             
-            /* Make buttons stack nicely on mobile */
             .btn-primary, .btn-social { 
                 width: 100%; 
                 padding: 14px 20px; 
@@ -305,15 +318,15 @@
 <a href="/" class="btn-top-left">Back to Event</a>
 
 <div class="wrapper hero">
-    <div class="logo-container">
+    <div class="logo-container reveal">
         <a href="/"><img src="images/logo.png" alt="Carmelite Logo" class="main-logo" id="hero-logo"></a>
     </div>
 
-    <h1>About Pete<span class="accent">.</span></h1>
+    <h1 class="reveal">About Pete<span class="accent">.</span></h1>
 </div>
 
 <div class="wrapper">
-    <div style="background: rgba(17, 24, 39, 0.7); padding: 40px; border-radius: 8px; border: 1px solid rgba(227, 49, 111, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+    <div class="reveal" style="background: rgba(17, 24, 39, 0.7); padding: 40px; border-radius: 8px; border: 1px solid rgba(227, 49, 111, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
         
         <h3 style="text-align: left; margin-top: 0;">The Digital Burnout<span class="accent">.</span></h3>
         <p>For over a decade, my entire world existed behind a screen. I built a methodology for software engineers, scaled an online coaching business to £40k a month, and hit what most consider "success." The reality? It was an endless cycle of remote work, burnout, and absolute digital isolation.</p>
@@ -331,7 +344,7 @@
         
     </div>
 
-    <div class="image-gallery-row">
+    <div class="image-gallery-row reveal">
         
         <div class="gallery-item">
             <img src="/images/1_pete_in_studio.jpg" alt="Pete Solo in Studio" class="gallery-img">
@@ -349,7 +362,8 @@
         </div>
 
     </div>
-    <div style="margin-top: 40px; padding: 25px; background: rgba(17, 24, 39, 0.7); border-radius: 8px; border: 1px solid rgba(227, 49, 111, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+    
+    <div class="reveal" style="margin-top: 40px; padding: 25px; background: rgba(17, 24, 39, 0.7); border-radius: 8px; border: 1px solid rgba(227, 49, 111, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
         <div class="flex-row" style="margin: 0; gap: 20px;">
             <div class="flex-col" style="min-width: 100%; text-align: center;">
                 <p class="reputation-label">REP<span class="accent">.</span>utation</p>
@@ -373,13 +387,31 @@
         </div>
     </div>
 
-    <div style="display: flex; justify-content: center; width: 100%;">
+    <div class="reveal" style="display: flex; justify-content: center; width: 100%;">
         <a href="https://carmelite.fillout.com/t/5Qp3pWzQdXus" target="_blank" rel="noopener noreferrer" class="btn-primary">
             Apply for Sessions 001
         </a>
     </div>
 
 </div>
+
+<script>
+    /** FLY-IN (INTERSECTION OBSERVER) LOGIC **/
+    const observerOptions = {
+        threshold: 0.1, 
+        rootMargin: "0px 0px -50px 0px" 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

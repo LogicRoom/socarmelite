@@ -96,7 +96,6 @@
             height: 120px; 
             width: auto;
             filter: drop-shadow(0 0 15px rgba(227, 49, 111, 0.6));
-            /* Force GPU acceleration to prevent mobile WebKit clipping artifacts */
             transform: translateZ(0);
             transition: transform 0.3s ease, filter 0.3s ease;
         }
@@ -148,14 +147,12 @@
             z-index: 1000; 
             backdrop-filter: blur(8px); 
             
-            /* Start hidden, slightly pushed up */
             opacity: 0;
             pointer-events: none;
             transform: translateY(-15px);
             transition: all 0.4s ease;
         }
 
-        /* Class added via Javascript on scroll */
         .btn-top-right.show-nav {
             opacity: 1;
             pointer-events: auto;
@@ -198,7 +195,6 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
-        /* Adjust primary button when inside the hero group */
         .hero-buttons .btn-primary {
             margin: 0;
         }
@@ -358,6 +354,16 @@
                 right: 15px;
                 font-size: 0.7rem;
                 padding: 6px 12px;
+            }
+            
+            /* MODAL MOBILE FIX - Protects X button from iPhone top browser bar */
+            .modal-content {
+                margin-top: 40px; 
+            }
+            .close-modal {
+                top: -35px;
+                right: 5px;
+                font-size: 2rem;
             }
         }
     </style>
@@ -526,11 +532,7 @@
     <div class="reveal" style="margin: 60px 0; padding: 30px; background: rgba(17, 24, 39, 0.7); border: 1px solid rgba(227, 49, 111, 0.3); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
         <h2>The Collective<span class="accent">.</span></h2>
         <p style="font-style: italic; color: var(--text-bright); font-size: 1.1rem;">"Real connection requires a physical space and a shared frequency."</p>
-
-
         <p>Carmelite Sessions was born from a realization: <strong>modern clubbing is broken.</strong> You can go to a top-tier venue in London, but it is almost always too noisy and chaotic to actually talk to new people and connect with them authentically. So we are building an <strong>invite-only collective with actual standards and an approach that fosters easier communication and connection during our events.</strong></p>
-
-
         <p>We are creating a space that naturally fosters fun, effortless conversation. We use premium house music and the energy of the dancefloor as the ultimate icebreaker, allowing you to step away from the screens and meet genuinely cool, driven people.</p>
         <p>Our acid test for every event? It must be completely immersive, engaging, and enjoyable even if you don't drink. This isn't just a one-off showcase; it is a highly curated environment designed for you to find real value and actually look forward to getting out of the house again.</p>
     </div>
@@ -559,7 +561,7 @@
     };
     
     window.addEventListener('scroll', checkNavScroll);
-    checkNavScroll(); // Run once on load just in case they refresh while scrolled down
+    checkNavScroll(); // Run once on load
 
     /**
      * ==========================================
@@ -630,7 +632,6 @@
         SHOW_FOG: true           
     };
 
-    // --- ACCESSIBILITY & HARDWARE CHECK ---
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas ? canvas.getContext('2d', { alpha: false }) : null; 
@@ -651,14 +652,11 @@
         if (CONFIG.SHOW_FOG) {
             CONFIG.SHOW_FOG = false;
             smokeParticles = [];
-            console.log("Auto-Throttle: Fog disabled.");
         } else if (CONFIG.SHOW_LASERS) {
             CONFIG.SHOW_LASERS = false;
             lasers = [];
-            console.log("Auto-Throttle: Lasers disabled.");
         } else if (discoBalls.length > 2) {
             discoBalls.splice(2); 
-            console.log("Auto-Throttle: Reduced disco balls.");
         }
     }
 
@@ -980,7 +978,6 @@
             canvas.height = window.innerHeight;
             width = canvas.width;
             height = canvas.height;
-            // Update max height on resize to match new screen dimensions
             if (graphicEQ) graphicEQ.maxHeight = height * 0.3;
 
             if (Math.abs(window.innerWidth - lastWidth) > 50) {
