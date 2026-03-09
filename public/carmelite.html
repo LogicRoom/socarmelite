@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Pete | Carmelite Sessions 001</title>
+
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap');
+
+        :root {
+            --bg-color: #111827;
+            --text-main: #d9d9d9;
+            --text-bright: #ffffff;
+            --accent: #e3316f;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative; 
+            z-index: 1;
+        }
+        
+        .wrapper.hero {
+            padding-top: 80px; 
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .main-logo {
+            height: 120px; 
+            width: auto;
+            filter: drop-shadow(0 0 15px rgba(227, 49, 111, 0.6));
+            transform: translateZ(0);
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: translateZ(0) scale(1.05);
+            filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: var(--text-bright);
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 .accent, h2 .accent, h3 .accent { color: var(--accent); }
+
+        p {
+            font-size: 1.1rem;
+            text-align: left;
+            margin-bottom: 20px;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .btn-primary {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--accent);
+            color: var(--text-bright);
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 4px;
+            margin: 40px auto;
+            width: fit-content;
+            letter-spacing: 1px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background-color: #c8285f;
+        }
+
+        .btn-secondary {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 14px 38px;
+            border-radius: 4px;
+            margin: 30px auto;
+            width: fit-content;
+            letter-spacing: 1px;
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            background-color: var(--accent);
+            color: var(--text-bright);
+        }
+
+        @media (max-width: 768px) {
+            .wrapper { padding: 20px 15px; }
+            .wrapper.hero { padding-top: 60px; }
+            .main-logo { height: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper hero">
+    <div class="logo-container">
+        <a href="/"><img src="images/logo.png" alt="Carmelite Logo" class="main-logo" id="hero-logo"></a>
+    </div>
+
+    <h1>ABOUT PETE<span class="accent">.</span></h1>
+</div>
+
+<div class="wrapper">
+    <div style="background: rgba(17, 24, 39, 0.7); padding: 40px; border-radius: 8px; border: 1px solid rgba(227, 49, 111, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+        
+        <h3 style="text-align: left; margin-top: 0;">The Screen Time<span class="accent">.</span></h3>
+        <p>For years, my entire world existed behind a screen. I started out grinding as a software engineer, struggling to break through until I eventually invented a methodology to help other engineers write better code. I spun that into a consulting and online coaching business.</p>
+        <p>On paper, I had "made it"—peaking at £40k a month in revenue. But behind the scenes, it was an endless cycle of making money, hiring teams, and completely burning out. I realized that while the online world generated cash, it brought absolutely zero real human connection.</p>
+
+        <h3 style="text-align: left;">The Disconnect<span class="accent">.</span></h3>
+        <p>By 2023, I officially stepped away from the coaching space. I did a brief stint in finance, but it was just more of the same: remote work, more screens, and total isolation. I hit a serious low point that year. I came to the harsh realization that a life without a physical community isn't much of a life at all.</p>
+
+        <h3 style="text-align: left;">Stepping Out Solo<span class="accent">.</span></h3>
+        <p>In 2024, everything shifted. I had always been a house music producer in the background, so I made a definitive decision: I was going to force myself out of the house and discover the London house music scene. I started going to events completely on my own.</p>
+
+        <h3 style="text-align: left;">The Music & The Mission<span class="accent">.</span></h3>
+        <p>Things escalated quickly. I started getting my unreleased tracks played by DJs in iconic venues like Ministry of Sound. But the real breakthrough wasn't just hearing my music on a massive club system—it was looking around and realizing that, through the scene, I had suddenly built a massive network of real, in-person friends.</p>
+        <p>That was the catalyst for <strong>Carmelite Sessions</strong>. I decided to build something that was the exact opposite of my remote tech days. No more isolation. Just high-quality music, curated energy, and a real community built on actually getting out of the house and connecting in the physical world.</p>
+        
+    </div>
+
+    <a href="https://carmelite.fillout.com/t/5Qp3pWzQdXus" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Apply for Sessions 001
+    </a>
+
+    <a href="/" class="btn-secondary">
+        Return to Home
+    </a>
+</div>
+
+</body>
+</html>

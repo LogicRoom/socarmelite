@@ -9,6 +9,10 @@ const nextConfig = {
           source: '/',
           destination: '/sessions.html',
         },
+        {
+          source: '/carmelite',
+          destination: '/carmelite.html',
+        },
       ],
     };
   },

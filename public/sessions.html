@@ -63,13 +63,14 @@
         /* Dedicated breathing room for the top of the page */
         .wrapper.hero {
             padding-top: 80px; 
+            position: relative;
         }
         
         .logo-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px; /* Hard lock to push the logo down from the top edge */
+            margin-top: 20px; 
             margin-bottom: 30px;
             width: 100%;
         }
@@ -109,6 +110,34 @@
             text-align: center;
             margin-bottom: 20px;
             text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Top Right Button Styling */
+        .btn-top-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            color: var(--text-bright);
+            border: 1px solid var(--accent);
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-top-right:hover {
+            background-color: var(--accent);
+            color: var(--text-bright);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(227, 49, 111, 0.4);
         }
 
         .btn-primary {
@@ -218,15 +247,23 @@
 
         @media (max-width: 768px) {
             .wrapper { padding: 20px 15px; }
-            .wrapper.hero { padding-top: 60px; } /* Ensures mobile logo isn't squished to the top */
+            .wrapper.hero { padding-top: 60px; } 
             .main-logo { height: 100px; }
             .flex-col { min-width: 100%; }
+            .btn-top-right {
+                top: 15px;
+                right: 15px;
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
         }
     </style>
 </head>
 <body>
 
 <canvas id="background-canvas"></canvas>
+
+<a href="/carmelite" class="btn-top-right">About Carmelite (Pete)</a>
 
 <div class="wrapper hero">
     <div class="logo-container">
@@ -362,6 +399,11 @@
     <p>This isn't just a shoot; it’s a night to connect with a creative community. While our team films the official series, the space is fully "content-ready" for your own stories.</p>
     <p>Because we are curating a specific energy for the series, <strong>We have a limited guest list</strong> for SESSIONS 001 which you can pre-register for here; if successful you get an incredible backdrop and a premium experience; we get your energy on film.</p>
 
+    <div style="margin: 60px 0; padding: 30px; background: rgba(17, 24, 39, 0.7); border: 1px solid rgba(227, 49, 111, 0.3); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+        <h2>The Community<span class="accent">.</span></h2>
+        <p style="font-style: italic; color: var(--text-bright); font-size: 1.1rem;">"A space to connect, create, and find your people."</p>
+        <p>Carmelite Sessions is more than just a live recording series—it is the foundation of a new, in-person community. We are building an ecosystem where creative minds can find real value, collaborate, and form genuine connections away from the digital noise. Whether you are an artist, a designer, or simply someone who appreciates high-end house music, this is your invitation to get out of the house, meet like-minded individuals, and be part of a collective driven entirely by music and art.</p>
+    </div>
     <h2>Request an Invitation<span class="accent">.</span></h2>
     <p>Due to the intimate nature of the studio, spaces for Session 001 are strictly limited. If you want to bring a +1 and think they would be a good fit, send them this page and have them apply.</p>
     
