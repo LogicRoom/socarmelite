@@ -100,11 +100,6 @@
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        .main-logo:hover {
-            transform: translateZ(0) scale(1.05);
-            filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
-        }
-
         h1, h2 {
             text-align: center;
             color: var(--text-bright);
@@ -159,13 +154,6 @@
             transform: translateY(0);
         }
 
-        .btn-top-right.show-nav:hover {
-            background-color: var(--accent);
-            color: var(--text-bright);
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(227, 49, 111, 0.4);
-        }
-
         /* HERO BUTTONS CONTAINER */
         .hero-buttons {
             display: flex;
@@ -199,11 +187,6 @@
             margin: 0;
         }
 
-        .btn-primary:hover {
-            transform: scale(1.05);
-            background-color: #c8285f;
-        }
-
         /* PLAY BUTTON FOR VIDEO */
         .btn-play {
             background: transparent;
@@ -224,12 +207,47 @@
             margin: 0 auto;
         }
 
-        .btn-play:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(227, 49, 111, 0.2);
+        /* =========================================
+           HOVER EFFECTS (DESKTOP ONLY)
+           ========================================= */
+        @media (hover: hover) and (pointer: fine) {
+            .btn-top-right.show-nav:hover {
+                background-color: var(--accent);
+                color: var(--text-bright);
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(227, 49, 111, 0.4);
+            }
+            .btn-primary:hover {
+                transform: scale(1.05);
+                background-color: #c8285f;
+            }
+            .btn-play:hover {
+                color: var(--accent);
+                border-color: var(--accent);
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(227, 49, 111, 0.2);
+            }
+            .main-logo:hover {
+                transform: translateZ(0) scale(1.05);
+                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
+            }
+            .close-modal:hover { color: var(--accent); }
+            .row-img:hover, .portrait-img:hover {
+                transform: scale(1.03);
+                filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
+            }
+            .icon:hover { transform: scale(1.03); }
         }
+
+        /* =========================================
+           ACTIVE/PRESS EFFECTS (MOBILE & DESKTOP)
+           ========================================= */
+        .btn-top-right:active, .btn-primary:active, .btn-play:active {
+            transform: scale(0.95);
+        }
+        .btn-top-right:active { background-color: var(--accent); }
+        .btn-primary:active { background-color: #c8285f; }
+        .btn-play:active { color: var(--accent); border-color: var(--accent); }
 
         /* VIDEO MODAL */
         .modal-overlay {
@@ -262,8 +280,6 @@
         
         .close-modal { position: absolute; top: -45px; right: 0; background: transparent; border: none; color: var(--text-bright); font-size: 2.5rem; cursor: pointer; transition: color 0.2s ease; padding: 0; line-height: 1; }
         
-        .close-modal:hover { color: var(--accent); }
-
         .flex-row {
             display: flex;
             flex-direction: row;
@@ -294,11 +310,6 @@
             filter: drop-shadow(0 0 12px rgba(227, 49, 111, 0.6));
         }
         
-        .row-img:hover, .portrait-img:hover {
-            transform: scale(1.03);
-            filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
-        }
-
         .flex-col a {
             display: flex;
             justify-content: center;
@@ -339,10 +350,6 @@
             margin-top: 10px;
             transition: transform 0.2s ease;
         }
-        
-        .icon:hover {
-            transform: scale(1.03);
-        }
 
         @media (max-width: 768px) {
             .wrapper { padding: 20px 15px; }
@@ -356,7 +363,6 @@
                 padding: 6px 12px;
             }
             
-            /* MODAL MOBILE FIX - Protects X button from iPhone top browser bar */
             .modal-content {
                 margin-top: 40px; 
             }
@@ -379,7 +385,6 @@
         <button class="close-modal" id="close-modal-btn">&times;</button>
         <video id="venue-video" controls playsinline>
             <source src="/images/4_venue_video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
     </div>
 </div>
@@ -561,7 +566,7 @@
     };
     
     window.addEventListener('scroll', checkNavScroll);
-    checkNavScroll(); // Run once on load
+    checkNavScroll();
 
     /**
      * ==========================================
