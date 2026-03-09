@@ -96,6 +96,7 @@
             height: 120px; 
             width: auto;
             filter: drop-shadow(0 0 15px rgba(227, 49, 111, 0.6));
+            /* Force GPU acceleration to prevent mobile WebKit clipping artifacts */
             transform: translateZ(0);
             transition: transform 0.3s ease, filter 0.3s ease;
         }
@@ -183,6 +184,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
+        /* Adjust primary button when inside the hero group */
         .hero-buttons .btn-primary {
             margin: 0;
         }
@@ -227,16 +229,16 @@
                 transform: scale(1.05);
                 box-shadow: 0 4px 15px rgba(227, 49, 111, 0.2);
             }
-            .main-logo:hover {
-                transform: translateZ(0) scale(1.05);
-                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
-            }
             .close-modal:hover { color: var(--accent); }
             .row-img:hover, .portrait-img:hover {
                 transform: scale(1.03);
                 filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
             }
             .icon:hover { transform: scale(1.03); }
+            .main-logo:hover {
+                transform: translateZ(0) scale(1.05);
+                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
+            }
         }
 
         /* =========================================
@@ -279,7 +281,7 @@
         }
         
         .close-modal { position: absolute; top: -45px; right: 0; background: transparent; border: none; color: var(--text-bright); font-size: 2.5rem; cursor: pointer; transition: color 0.2s ease; padding: 0; line-height: 1; }
-        
+
         .flex-row {
             display: flex;
             flex-direction: row;
@@ -309,7 +311,7 @@
             transition: transform 0.3s ease, filter 0.3s ease;
             filter: drop-shadow(0 0 12px rgba(227, 49, 111, 0.6));
         }
-        
+
         .flex-col a {
             display: flex;
             justify-content: center;
@@ -363,6 +365,7 @@
                 padding: 6px 12px;
             }
             
+            /* MODAL MOBILE FIX - Protects X button from iPhone top browser bar */
             .modal-content {
                 margin-top: 40px; 
             }
