@@ -142,6 +142,7 @@
             letter-spacing: 1px;
             z-index: 1000; 
             backdrop-filter: blur(8px); 
+            touch-action: manipulation;
             
             opacity: 0;
             pointer-events: none;
@@ -182,6 +183,7 @@
             letter-spacing: 1px;
             transition: transform 0.2s ease, background-color 0.2s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            touch-action: manipulation;
         }
         
         /* Adjust primary button when inside the hero group */
@@ -207,6 +209,7 @@
             align-items: center;
             gap: 8px;
             margin: 0 auto;
+            touch-action: manipulation;
         }
 
         /* VIDEO MODAL */
@@ -238,7 +241,7 @@
             outline: none; 
         }
         
-        .close-modal { position: absolute; top: -45px; right: 0; background: transparent; border: none; color: var(--text-bright); font-size: 2.5rem; cursor: pointer; transition: color 0.2s ease; padding: 0; line-height: 1; }
+        .close-modal { position: absolute; top: -45px; right: 0; background: transparent; border: none; color: var(--text-bright); font-size: 2.5rem; cursor: pointer; transition: color 0.2s ease; padding: 0; line-height: 1; touch-action: manipulation; }
 
         .flex-row {
             display: flex;
@@ -311,13 +314,13 @@
             transition: transform 0.2s ease;
         }
 
-        /* MOBILE DOUBLE-CLICK FIX: Only apply hover effects if device has a real mouse */
+        /* SAFE HOVERS: ONLY APPLIES TO MOUSE/DESKTOP */
         @media (hover: hover) {
             .main-logo:hover {
                 transform: translateZ(0) scale(1.05);
                 filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
             }
-            .btn-top-right:hover, .btn-top-right.show-nav:hover {
+            .btn-top-right.show-nav:hover {
                 background-color: var(--accent);
                 color: var(--text-bright);
                 transform: scale(1.05);
@@ -338,9 +341,7 @@
                 transform: scale(1.03);
                 filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
             }
-            .icon:hover {
-                transform: scale(1.03);
-            }
+            .icon:hover { transform: scale(1.03); }
         }
 
         @media (max-width: 768px) {

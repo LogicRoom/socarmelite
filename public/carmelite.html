@@ -115,6 +115,7 @@
             transition: all 0.2s ease;
             z-index: 1000; 
             backdrop-filter: blur(8px); 
+            touch-action: manipulation;
         }
 
         /* Reputation Section styling */
@@ -211,6 +212,7 @@
             margin-top: 40px; 
             margin-bottom: 10px;
             width: fit-content;
+            touch-action: manipulation;
         }
 
         /* Social Trust Buttons */
@@ -240,13 +242,14 @@
             transition: all 0.2s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
+            touch-action: manipulation;
         }
 
         .btn-linkedin { border: 2px solid var(--linkedin); color: var(--linkedin); }
         .btn-soundcloud { border: 2px solid var(--soundcloud); color: var(--soundcloud); }
         .btn-instagram { border: 2px solid var(--instagram); color: var(--instagram); }
 
-        /* MOBILE DOUBLE-CLICK FIX: Only apply hover effects if device has a real mouse */
+        /* SAFE HOVERS: ONLY APPLIES TO MOUSE/DESKTOP */
         @media (hover: hover) {
             .main-logo:hover {
                 transform: translateZ(0) scale(1.05);
