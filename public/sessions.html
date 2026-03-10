@@ -145,14 +145,15 @@
             touch-action: manipulation;
             
             opacity: 0;
-            pointer-events: none;
+            visibility: hidden;
             transform: translateY(-15px);
-            transition: all 0.4s ease;
+            /* Removed 'all' to prevent WebKit tap/hit-testing bugs */
+            transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, visibility 0.4s;
         }
 
         .btn-top-right.show-nav {
             opacity: 1;
-            pointer-events: auto;
+            visibility: visible;
             transform: translateY(0);
         }
 
@@ -314,10 +315,12 @@
             transition: transform 0.2s ease;
         }
 
-        /* =========================================
-           HOVER EFFECTS (DESKTOP ONLY)
-           ========================================= */
+        /* SAFE HOVERS: ONLY APPLIES TO MOUSE/DESKTOP */
         @media (hover: hover) and (pointer: fine) {
+            .main-logo:hover {
+                transform: translateZ(0) scale(1.05);
+                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
+            }
             .btn-top-right.show-nav:hover {
                 background-color: var(--accent);
                 color: var(--text-bright);
@@ -340,10 +343,6 @@
                 filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
             }
             .icon:hover { transform: scale(1.03); }
-            .main-logo:hover {
-                transform: translateZ(0) scale(1.05);
-                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
-            }
         }
 
         @media (max-width: 768px) {
