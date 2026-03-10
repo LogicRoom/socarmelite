@@ -314,12 +314,10 @@
             transition: transform 0.2s ease;
         }
 
-        /* SAFE HOVERS: ONLY APPLIES TO MOUSE/DESKTOP */
-        @media (hover: hover) {
-            .main-logo:hover {
-                transform: translateZ(0) scale(1.05);
-                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
-            }
+        /* =========================================
+           HOVER EFFECTS (DESKTOP ONLY)
+           ========================================= */
+        @media (hover: hover) and (pointer: fine) {
             .btn-top-right.show-nav:hover {
                 background-color: var(--accent);
                 color: var(--text-bright);
@@ -342,6 +340,10 @@
                 filter: drop-shadow(0 0 20px rgba(227, 49, 111, 0.8));
             }
             .icon:hover { transform: scale(1.03); }
+            .main-logo:hover {
+                transform: translateZ(0) scale(1.05);
+                filter: drop-shadow(0 0 25px rgba(227, 49, 111, 0.9));
+            }
         }
 
         @media (max-width: 768px) {
