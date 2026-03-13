@@ -144,21 +144,24 @@
             z-index: 1000;
             backdrop-filter: blur(8px);
             touch-action: manipulation;
+            
+            /* iOS Fix: Visibility instead of pointer-events */
             opacity: 0;
+            visibility: hidden;
             transform: translateY(-15px);
-            pointer-events: none;
 
             transition: opacity 0.4s ease,
                         transform 0.4s ease,
                         background-color 0.2s ease,
                         color 0.2s ease,
-                        box-shadow 0.2s ease;
+                        box-shadow 0.2s ease,
+                        visibility 0.4s;
         }
 
         .btn-top-right.show-nav {
             opacity: 1;
+            visibility: visible;
             transform: translateY(0);
-            pointer-events: auto;
         }
 
         /* HERO BUTTONS CONTAINER */
@@ -377,7 +380,7 @@
 
 <canvas id="background-canvas"></canvas>
 
-<a href="/carmelite" class="btn-top-right">About Carmelite</a>
+<a href="/carmelite" class="btn-top-right" id="nav-btn">About Carmelite</a>
 
 <div id="video-modal" class="modal-overlay">
     <div class="modal-content">
@@ -556,16 +559,31 @@
      * 1. TOP NAV BUTTON SCROLL LOGIC
      * ==========================================
      */
-    const topNavBtn = document.querySelector('.btn-top-right');
+    const topNavBtn = document.getElementById('nav-btn');
     
     const checkNavScroll = () => {
         if (window.scrollY > 20) {
             topNavBtn.classList.add('show-nav');
+        } else {
+            // FIX 1: Ensures button disappears if you scroll back to top
+            topNavBtn.classList.remove('show-nav');
         }
     };
     
     window.addEventListener('scroll', checkNavScroll);
     checkNavScroll();
+
+    // FIX 2: Force iOS to reset the active ghost-click state the second you tap it
+    topNavBtn.addEventListener('click', function() {
+        this.blur();
+    });
+
+    // FIX 3: Reset everything when bouncing back from Safari's cache (bfcache)
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) { // True if loaded from iOS memory cache
+            checkNavScroll(); 
+        }
+    });
 
     /**
      * ==========================================
